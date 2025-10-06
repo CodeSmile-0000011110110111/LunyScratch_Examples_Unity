@@ -1,4 +1,4 @@
-[submodule "Packages/LunyScratch_Unity"]
-	path = Packages/LunyScratch_Unity
+[submodule "Packages/de.codesmile.lunyscratch_unity"]
+	path = Packages/de.codesmile.lunyscratch_unity
 	url = https://github.com/CodeSmile-0000011110110111/LunyScratch_Unity.git
 	branch = main
