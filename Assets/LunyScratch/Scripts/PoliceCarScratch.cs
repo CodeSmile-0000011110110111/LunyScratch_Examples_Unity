@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using static LunyScratch.Blocks;
 using static LunyScratch.UnityBlocks;
 
@@ -10,38 +9,30 @@ namespace LunyScratch
 	[DisallowMultipleComponent]
 	public sealed class PoliceCarScratch : ScratchBehaviour
 	{
-		[SerializeField] private Single _accelerateDelay = 1.2f;
-		[SerializeField] [Range(0.001f, 1f)] private Single _acceleration = 0.012f;
-		[SerializeField] private Single _maxSpeed = 2f;
-		[SerializeField] private Single _stopX = 9f;
-		[SerializeField] private Single _stopVelocitySlowdown = 0.95f;
-		[SerializeField] private Single _stopVelocityY = -1f;
+		// FIXME: due to sequences set up in start, changes of values at runtime do not take effect
+		[Tooltip("In degrees per second")]
+		[SerializeField] private Single _turnSpeed = 30f;
+		[SerializeField] private Single _moveSpeed = 30f;
+		[SerializeField] private Single _deceleration = 0.85f;
 
-		private Single _speed;
-		private Vector3 _heading;
 		private Rigidbody _rigidbody;
 
-		private void Awake()
-		{
-			_rigidbody = GetComponent<Rigidbody>();
-			_heading = transform.forward;
-		}
+		private void Awake() => _rigidbody = GetComponent<Rigidbody>();
 
 		private void Start()
 		{
-			/*
-			Scratch.Run(
-				Wait(_accelerateDelay),
-				RepeatForever(MoveCar)
-			);
-		*/
+			// Use RepeatForeverPhysics for physics-based movement
+			Scratch.RepeatForeverPhysics(
+				// Forward/Backward movement
+				If(() => IsKeyPressed(Key.W), MoveForward(_rigidbody, _moveSpeed))
+					.Else(If(() => IsKeyPressed(Key.S), MoveBackward(_rigidbody, _moveSpeed))
+							.Else(SlowDownMoving(_rigidbody, _deceleration))
+					),
 
-			Scratch.RepeatForever(
-				If(() => IsKeyJustPressed(Key.Any),
-					Log("hello")
-				)
+				// Steering - now uses rigidbody instead of transform
+				If(() => IsKeyPressed(Key.A), TurnLeft(_rigidbody, _turnSpeed)),
+				If(() => IsKeyPressed(Key.D), TurnRight(_rigidbody, _turnSpeed))
 			);
-
 
 			var lights = GetComponentsInChildren<Light>();
 			Scratch.RepeatForever(
@@ -52,31 +43,6 @@ namespace LunyScratch
 				Enable(lights[1]),
 				Wait(0.12)
 			);
-		}
-
-
-		void Update()
-		{
-			var keyboard = Keyboard.current;
-			if (keyboard.wKey.wasPressedThisFrame)
-				Debug.Log($"Key: {keyboard.wKey}");
-		}
-
-		private void MoveCar()
-		{
-			if (transform.position.x < _stopX)
-			{
-				_speed = 0f;
-				var velocity = _rigidbody.linearVelocity;
-				velocity *= _stopVelocitySlowdown;
-				velocity.y = -_stopVelocityY;
-				_rigidbody.linearVelocity = velocity;
-			}
-			else if (_speed < _maxSpeed)
-			{
-				_speed += _acceleration;
-				_rigidbody.linearVelocity += _heading * _speed;
-			}
 		}
 	}
 }
