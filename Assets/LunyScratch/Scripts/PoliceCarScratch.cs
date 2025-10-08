@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using static LunyScratch.Blocks;
-using static LunyScratch.UnityBlocks;
 
 namespace LunyScratch
 {
@@ -18,24 +17,24 @@ namespace LunyScratch
 		{
 			// Use RepeatForeverPhysics for physics-based movement
 			RepeatForeverPhysics(
-				// Forward/Backward movement - no lambdas needed!
+				// Forward/Backward movement
 				If(IsKeyPressed(Key.W), MoveForward(_moveSpeed))
 					.Else(If(IsKeyPressed(Key.S), MoveBackward(_moveSpeed))
 						.Else(SlowDownMoving(_deceleration))
 					),
 
-				// Steering - clean and simple!
+				// Steering
 				If(IsKeyPressed(Key.A), TurnLeft(_turnSpeed)),
 				If(IsKeyPressed(Key.D), TurnRight(_turnSpeed))
 			);
 
-			var lights = GetComponentsInChildren<Light>();
+			// Context-aware! No need to get lights manually
 			RepeatForever(
-				Enable(lights[0]),
-				Disable(lights[1]),
+				Enable("BlueLight"),
+				Disable("RedLight"),
 				Wait(0.15),
-				Disable(lights[0]),
-				Enable(lights[1]),
+				Disable("BlueLight"),
+				Enable("RedLight"),
 				Wait(0.12)
 			);
 		}
