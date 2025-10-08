@@ -7,7 +7,7 @@ Key Principles
 - Engine-agnostic Core: Anything not engine-specific must live in the Core layer. Only thin integration layers may reference engine SDKs (Unity, Godot, Unreal).
 - Core classes wrapping internal logic should be marked internal. Internals are visible to Engine-specific implementation assembly. Examples: BlockRunner, GameEngine, NullScratchContext.
 - Context-driven access: Blocks obtain engine objects via IScratchContext. Callers never pass engine references.
-- Simple-by-default API: Public API favors simple static methods returning IScratchBlock. Power users get optional lambda overloads.
+- Simple-by-default API: Public API favors simple static methods returning IScratchBlock. Power users may get optional lambda overloads.
 - Public API methods should use Double instead of Single types so that users needn't specify the 'f' in values like '1.234'.
 - Composition-first: Scripts compose behavior from small, single-purpose blocks.
 - Safety and clarity: Prefer sealed, private block implementations, no side caches in blocks; context manages caching.
