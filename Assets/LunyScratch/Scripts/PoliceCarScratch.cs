@@ -22,7 +22,7 @@ namespace LunyScratch
 		private void Start()
 		{
 			// Use RepeatForeverPhysics for physics-based movement
-			Scratch.RepeatForeverPhysics(
+			RepeatForeverPhysics(
 				// Forward/Backward movement
 				If(() => IsKeyPressed(Key.W), MoveForward(_rigidbody, _moveSpeed))
 					.Else(If(() => IsKeyPressed(Key.S), MoveBackward(_rigidbody, _moveSpeed))
@@ -35,7 +35,7 @@ namespace LunyScratch
 			);
 
 			var lights = GetComponentsInChildren<Light>();
-			Scratch.RepeatForever(
+			RepeatForever(
 				Enable(lights[0]),
 				Disable(lights[1]),
 				Wait(0.15),
