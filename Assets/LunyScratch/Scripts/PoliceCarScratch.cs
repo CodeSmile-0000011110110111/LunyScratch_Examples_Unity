@@ -37,6 +37,8 @@ namespace LunyScratch
 				Enable("RedLight"),
 				Wait(0.12)
 			);
+
+			When(CollisionEnter(tag:"CompanionCube"), Say("Collided with something"));
 		}
 	}
 }
