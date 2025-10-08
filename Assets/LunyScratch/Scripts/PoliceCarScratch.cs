@@ -18,15 +18,15 @@ namespace LunyScratch
 		{
 			// Use RepeatForeverPhysics for physics-based movement
 			RepeatForeverPhysics(
-				// Forward/Backward movement - context-aware!
-				If(() => IsKeyPressed(Key.W), MoveForward(_moveSpeed))
-					.Else(If(() => IsKeyPressed(Key.S), MoveBackward(_moveSpeed))
+				// Forward/Backward movement - no lambdas needed!
+				If(IsKeyPressed(Key.W), MoveForward(_moveSpeed))
+					.Else(If(IsKeyPressed(Key.S), MoveBackward(_moveSpeed))
 						.Else(SlowDownMoving(_deceleration))
 					),
 
-				// Steering
-				If(() => IsKeyPressed(Key.A), TurnLeft(_turnSpeed)),
-				If(() => IsKeyPressed(Key.D), TurnRight(_turnSpeed))
+				// Steering - clean and simple!
+				If(IsKeyPressed(Key.A), TurnLeft(_turnSpeed)),
+				If(IsKeyPressed(Key.D), TurnRight(_turnSpeed))
 			);
 
 			var lights = GetComponentsInChildren<Light>();
