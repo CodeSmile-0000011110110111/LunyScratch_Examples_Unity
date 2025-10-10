@@ -48,13 +48,10 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 		}
 
 		When(CollisionEnter(tag: "CompanionCube"),
-			Say("Police collided with cube!"),
-			SetVariable("test1", 1.23456789),
-			SetVariable("test2", "a string"),
 			IncrementVariable("Score"));
 	}
 
-	private void OnScoreChanged(Double value) => _hud.Score = value;
+	private void OnScoreChanged(Variable value) => _hud.Score = value.AsNumber();
 
 	protected override void OnBehaviourDestroy()
 	{
