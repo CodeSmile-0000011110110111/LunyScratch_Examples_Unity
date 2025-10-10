@@ -1,4 +1,4 @@
-LunyScratch Core Guidelines
+# LunyScratch Core Guidelines
 
 Purpose
 - This document summarizes conventions and patterns used by the LunyScratch API to keep the Core framework engine-agnostic and consistent across Unity, Godot, and Unreal (via UnrealSharp). Use it when adding new blocks/APIs or writing example scripts.
@@ -11,7 +11,7 @@ Key Principles
 - Public API methods should use Double instead of Single types so that users needn't specify the 'f' in values like '1.234'.
 - Composition-first: Scripts compose behavior from small, single-purpose blocks.
 - Safety and clarity: Prefer sealed, private block implementations, no side caches in blocks; context manages caching.
-- Objects only query themselves and their children / child components, never parents or siblings. 
+- Objects only query themselves and their children / child components, never parents or siblings.
 
 Developer Usage (scripts)
 - Always import blocks with: using static LunyScratch.Blocks;
@@ -143,3 +143,84 @@ Checklist for New Blocks
 - [ ] Sealed private class, no caching of engine objects.
 - [ ] Units and behavior documented.
 - [ ] Optional lambda overload provided only if valuable.
+
+---
+
+Addendum: Variable Blocks, Table, and Logging Updates
+
+Context
+- The Core now exposes a weakly-typed Variable struct and a Table container (array + dictionary hybrid) for script variables. Variable blocks compose through the public Blocks API and delegate creation/type logic to Table.
+
+Public API (Core)
+- Namespace: LunyScratch
+- Class: public static partial class Blocks (file: Runtime/Core/Blocks/Variable/Blocks.Variable.cs)
+- Factory methods:
+  - IScratchBlock SetVariable(String name, Variable value)
+  - IScratchBlock IncrementVariable(String name) // increments by +1
+  - IScratchBlock IncrementVariable(String name, Variable value)
+  - IScratchBlock ChangeVariable(String name, Variable initialValue, Double changeValue)
+
+Behavior
+- SetVariable: sets the named variable to the provided value. If the variable does not exist, it is created. The variable’s type changes to match the assigned value.
+- IncrementVariable: delegates to Table.Increment(name, amount). Table creates the variable if missing (initialized to 0) and performs numeric checks/warnings internally.
+- ChangeVariable: delegates to Table.Change(name, initialValue, delta). Table creates the variable if missing and performs numeric checks/warnings internally.
+
+Implementation Pattern
+- Private sealed classes per block under Runtime/Core/Blocks/Variable:
+  - SetVariableBlock.cs
+  - IncrementVariableBlock.cs
+  - ChangeVariableBlock.cs
+- Each implements IScratchBlock and performs logic in Run(IScratchContext context, Double deltaTimeInSeconds).
+- Access variables via context.Runner.Variables (Table).
+- Warnings/errors are logged through GameEngine.Actions logging API (see below).
+
+Table
+- Hybrid array + dictionary container. Provides Get/Set for array (1-indexed) and dictionary keys.
+- Dictionary Set(String key, Variable value) lazily creates the key if it does not exist.
+- Increment(String key, Variable amount): Creates the variable if missing (initialized to 0). If the current value is non-numeric (e.g., String), emits a warning and does not change the value.
+- Change(String key, Variable initialValue, Double delta): If missing, initializes from initialValue; for strings, warns and does not change numerically.
+- ToString(): returns "Table(arr=<arrayCount>, dict=<dictCount>)".
+
+Variable
+- Weakly typed value wrapper supporting Boolean, Number, String.
+- Properties and conversions:
+  - Type (ValueType enum)
+  - IsNumeric / IsBoolean / IsString
+  - AsNumber / AsString / AsBoolean
+  - Set(Double/Boolean/String)
+  - Increment(Double) and Increment(Variable)
+- Operators:
+  - Arithmetic: +, -, *, /, % (numeric-only; no-ops if incompatible)
+  - Unary + and - (numeric-only for -)
+  - Equality: == and != (numeric compare for numeric types; ordinal for strings)
+  - Implicit conversions from Int32, Single, Double, Boolean, String to Variable
+- Equality support:
+  - IEquatable<Variable>, IEquatable<Int32>, IEquatable<Single>, IEquatable<Double>, IEquatable<Boolean>, IEquatable<String>
+- ToString(): returns e.g., "Number(3.14)", "String(hello)", "Boolean(True)".
+
+Logging API (Engine Actions)
+- IEngineActions exposes severity-specific methods:
+  - void LogInfo(String message)
+  - void LogWarn(String message)
+  - void LogError(String message)
+- Unity implementation maps to UnityEngine.Debug.Log/LogWarning/LogError.
+- All diagnostics and Table/Variable warnings should use the appropriate severity method (do not prefix message text with [WARN]/[ERROR]).
+
+Coding Conventions (recap for Variable blocks)
+- Public factories live in partial Blocks class; implementations are sealed classes in the same feature folder.
+- Public API uses System primitives (Double, Boolean, String) and returns IScratchBlock for composability.
+- No engine SDK types in Core; blocks interact with engine only via IScratchContext.
+
+File Locations
+- Core blocks and primitives live under: Packages/de.codesmile.lunyscratch_unity/Runtime/Core/
+  - Blocks/Variable/Blocks.Variable.cs
+  - Blocks/Variable/SetVariableBlock.cs
+  - Blocks/Variable/IncrementVariableBlock.cs
+  - Blocks/Variable/ChangeVariableBlock.cs
+  - Variable.cs, Table.cs
+- Engine-specific logging and contexts live under: Packages/de.codesmile.lunyscratch_unity/Runtime/Unity/
+
+Usage Example
+- When(CollisionEnter(tag:"CompanionCube"),
+    Say("Police collided with cube!"),
+    IncrementVariable("Score"));

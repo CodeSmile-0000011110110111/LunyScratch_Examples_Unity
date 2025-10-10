@@ -37,6 +37,8 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 			Wait(0.12)
 		);
 
-		When(CollisionEnter(tag:"CompanionCube"), Say("Police collided with cube!"));
+		When(CollisionEnter(tag:"CompanionCube"),
+			Say("Police collided with cube!"),
+			IncrementVariable("Score"));
 	}
 }
