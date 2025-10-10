@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ebb005eeb344ab88d50760daad10f27, type: 3}
+  m_Name: AssetRegistry
+  m_EditorClassIdentifier: 
+  _prefabs:
+  - Path: Assets/LunyScratch/Prefabs/CollectibleCompanionCube.prefab
+    Asset:
+      _prefab: {fileID: 2600945958381405081, guid: c9fc1b787c0c1e742ab88b350ac3aef1, type: 3}
+  - Path: Assets/LunyScratch/Prefabs/HitEffect.prefab
+    Asset:
+      _prefab: {fileID: 3133460839400387020, guid: 9cfda05fb61c7284aa0e324666839b74, type: 3}
+  - Path: Assets/LunyScratch/Prefabs/police.prefab
+    Asset:
+      _prefab: {fileID: 1254051303137994603, guid: d07297c9862248f4e8058b142344d0da, type: 3}
+  _ui:
+  - Path: Assets/LunyScratch/UI/GameHUD.uxml
+    Asset:
+      _asset: {fileID: 9197481963319205126, guid: 74e166a9f417cbd4e97515db6c019578, type: 3}
+  _audio: []
+  _defaultPrefab:
+    _prefab: {fileID: 0}
+  _defaultUI:
+    _asset: {fileID: 0}
+  _defaultAudio:
+    _clip: {fileID: 0}
