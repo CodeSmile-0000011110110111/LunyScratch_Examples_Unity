@@ -7,7 +7,8 @@ public sealed class CompanionCubeScratch : ScratchBehaviour
 {
 	private void Start()
 	{
-		When(CollisionEnter(name:"police"), PlaySound(), InstantiatePrefab("Assets/LunyScratch/Prefabs/HitEffect.prefab"));
+		// Using short asset address; see AssetRegistryBuilder normalization
+		When(CollisionEnter(name:"police"), PlaySound(), InstantiatePrefab("Prefabs/HitEffect"));
 		When(CollisionEnter(tag:"CompanionCube"), PlaySound());
 	}
 }

@@ -11,7 +11,6 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 	[SerializeField] private Single _turnSpeed = 30f;
 	[SerializeField] private Single _moveSpeed = 30f;
 	[SerializeField] private Single _deceleration = 0.85f;
-	private HUD _hud;
 
 	protected override void OnBehaviourAwake()
 	{
@@ -39,27 +38,15 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 		);
 
 		var scoreVariable = Variables.Set("Score", 0);
-
-		var hudObject = GameObject.Find("HUD");
-		if (hudObject != null)
-		{
-			_hud = hudObject.GetComponent<HUD>();
-			scoreVariable.OnValueChanged += OnScoreChanged;
-		}
+		var timeVariable = Variables.Set("Time", 30);
+		var hud = ScratchRuntime.Instance.ScratchHUD;
+		hud.BindVariable("Score", scoreVariable);
+		hud.BindVariable("Time", timeVariable);
 
 		When(CollisionEnter(tag: "CompanionCube"),
-			IncrementVariable("Score"));
-	}
+			IncrementVariable("Score"),
+			IncrementVariable("Time"));
 
-	private void OnScoreChanged(Variable value) => _hud.Score = value.AsNumber();
-
-	protected override void OnBehaviourDestroy()
-	{
-		if (_hud != null)
-		{
-			var scoreVariable = Variables.Get("Score");
-			if (scoreVariable != null)
-				scoreVariable.OnValueChanged -= OnScoreChanged;
-		}
+		RepeatForever(Wait(1), DecrementVariable("Time"));
 	}
 }
