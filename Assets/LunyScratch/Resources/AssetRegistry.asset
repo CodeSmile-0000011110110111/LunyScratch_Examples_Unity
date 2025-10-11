@@ -26,6 +26,9 @@ MonoBehaviour:
   - Path: UI/GameHUD
     Asset:
       _asset: {fileID: 9197481963319205126, guid: 74e166a9f417cbd4e97515db6c019578, type: 3}
+  - Path: UI/GameMenu
+    Asset:
+      _asset: {fileID: 9197481963319205126, guid: 9802e6d91d0c57f429867022bcd80462, type: 3}
   _audio: []
   _defaultPrefab:
     _prefab: {fileID: 0}
