@@ -31,14 +31,25 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 			If(IsKeyPressed(Key.D), TurnRight(_turnSpeed))
 		);
 
-		// Context-aware! No need to get lights manually
+		// RepeatForever(
+		// 	Enable("BlueLight"),
+		// 	Disable("RedLight"),
+		// 	Wait(0.15),
+		// 	Disable("BlueLight"),
+		// 	Enable("RedLight"),
+		// 	Wait(0.12)
+		// );
 		RepeatForever(
-			Enable("BlueLight"),
-			Disable("RedLight"),
-			Wait(0.15),
-			Disable("BlueLight"),
 			Enable("RedLight"),
+			Wait(0.16),
+			Disable("RedLight"),
 			Wait(0.12)
+		);
+		RepeatForever(
+			Disable("BlueLight"),
+			Wait(0.13),
+			Enable("BlueLight"),
+			Wait(0.17)
 		);
 
 		var scoreVariable = Variables.Set("Score", 0);
@@ -51,17 +62,29 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 			IncrementVariable("Score"),
 			IncrementVariable("Time"));
 
-		RepeatForever(Wait(1), DecrementVariable("Time"),
-			If(() => timeVariable.AsNumber() <= 0, ShowMenu(),
-				new ExecuteBlock(() => GameObject.Find("CinemachineCamera").GetComponent<CinemachineCamera>().Target.TrackingTarget = null),
-				new ExecuteBlock(() => enabled = false)));
-
 		// don't play minicube sound too often
 		var globalTimeout = ScratchRuntime.Singleton.Variables["MiniCubeSoundTimeout"];
 		RepeatForever(new ExecuteBlock(() => globalTimeout.Subtract(1)));
 
+		RepeatForever(Wait(1), DecrementVariable("Time"),
+			If(() => timeVariable.AsNumber() <= 0, ShowMenu(),
+				new ExecuteBlock(() => GameObject.Find("CinemachineCamera").GetComponent<CinemachineCamera>().Target.TrackingTarget = null),
+				Wait(0.5),
+				new ExecuteBlock(() => enabled = false)));
+
 		// must run globally because we Disable() the car and thus all object sequences will stop updating
 		Scratch.When(ButtonClicked("TryAgain"), ReloadCurrentScene());
 		Scratch.When(ButtonClicked("Quit"), QuitApplication());
+
+		// TODO:
+		// IsVariable(name, operator) or IsVariableEqual/Greater(name)
+		// GlobalVariable variants
+		// variable add/sub/mul/div etc
+		// add name to each variable for debugging and binding
+		// Binding: update to use variable's name
+		// CollisionEnter: allow specifying multiple tags or names
+		// add IsVelocity tests
+		// add PlaySound with timeout?
+		// If/When: allow multiple conditions, events (AND or OR)
 	}
 }

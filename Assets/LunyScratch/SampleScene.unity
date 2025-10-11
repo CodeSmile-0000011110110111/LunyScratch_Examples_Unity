@@ -3910,8 +3910,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5123691272888940971, guid: d07297c9862248f4e8058b142344d0da, type: 3}
-      propertyPath: _turnSpeed
-      value: 70
+      propertyPath: _startTimeInSeconds
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
