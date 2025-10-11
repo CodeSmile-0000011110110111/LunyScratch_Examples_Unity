@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: -1859607166484386082}
   - component: {fileID: -6821403272347792900}
   m_Layer: 6
-  m_Name: CollectibleCompanionCube
+  m_Name: CompanionCube
   m_TagString: CompanionCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -259,6 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd8a6fd314226fd468fb33df157c1563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _minVelocityForSound: 15
 --- !u!82 &-6821403272347792900
 AudioSource:
   m_ObjectHideFlags: 0
@@ -270,7 +271,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 6418180475301049370, guid: 93ed77470dc5c4c45a2bfdd03206d5d3, type: 2}
+  m_Resource: {fileID: 8300000, guid: 237c6cf724b2fb247a11a6f85cb03da4, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -278,10 +279,10 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 175
+  Priority: 100
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 22
+  MaxDistance: 300
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -316,7 +317,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

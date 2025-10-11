@@ -1,14 +1,21 @@
 using LunyScratch;
+using System;
 using UnityEngine;
 using static LunyScratch.Blocks;
 
 [DisallowMultipleComponent]
 public sealed class CompanionCubeScratch : ScratchBehaviour
 {
+	[SerializeField] private Single _minVelocityForSound = 25f;
+
+	private Rigidbody _rigidbody;
+
 	private void Start()
 	{
-		// Using short asset address; see AssetRegistryBuilder normalization
-		When(CollisionEnter(name:"police"), PlaySound(), InstantiatePrefab("Prefabs/HitEffect"));
-		When(CollisionEnter(tag:"CompanionCube"), PlaySound());
+		_rigidbody = GetComponent<Rigidbody>();
+
+		When(CollisionEnter("police"), InstantiatePrefab("Prefabs/HitEffect"));
+		When(CollisionEnter(),
+			If(() => _rigidbody.linearVelocity.sqrMagnitude > _minVelocityForSound * _minVelocityForSound, PlaySound()));
 	}
 }

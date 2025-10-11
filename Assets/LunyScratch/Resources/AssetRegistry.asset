@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AssetRegistry
   m_EditorClassIdentifier: 
   _prefabs:
-  - Path: Prefabs/CollectibleCompanionCube
+  - Path: Prefabs/CompanionCube
     Asset:
       _prefab: {fileID: 2600945958381405081, guid: c9fc1b787c0c1e742ab88b350ac3aef1, type: 3}
   - Path: Prefabs/HitEffect

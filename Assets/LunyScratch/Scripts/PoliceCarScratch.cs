@@ -1,7 +1,7 @@
 using LunyScratch;
 using System;
+using Unity.Cinemachine;
 using UnityEngine;
-using UnityEngine.UI;
 using static LunyScratch.Blocks;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -12,7 +12,7 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 	[SerializeField] private Single _turnSpeed = 30f;
 	[SerializeField] private Single _moveSpeed = 30f;
 	[SerializeField] private Single _deceleration = 0.85f;
-	[SerializeField] private int _startTimeInSeconds = 30;
+	[SerializeField] private Int32 _startTimeInSeconds = 30;
 
 	protected override void OnBehaviourAwake()
 	{
@@ -52,11 +52,16 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 			IncrementVariable("Time"));
 
 		RepeatForever(Wait(1), DecrementVariable("Time"),
-			If(() => timeVariable.AsNumber() <= 0, ShowMenu(), Disable()));
+			If(() => timeVariable.AsNumber() <= 0, ShowMenu(),
+				new ExecuteBlock(() => GameObject.Find("CinemachineCamera").GetComponent<CinemachineCamera>().Target.TrackingTarget = null),
+				new ExecuteBlock(() => enabled = false)));
+
+		// don't play minicube sound too often
+		var globalTimeout = ScratchRuntime.Singleton.Variables["MiniCubeSoundTimeout"];
+		RepeatForever(new ExecuteBlock(() => globalTimeout.Subtract(1)));
 
 		// must run globally because we Disable() the car and thus all object sequences will stop updating
 		Scratch.When(ButtonClicked("TryAgain"), ReloadCurrentScene());
 		Scratch.When(ButtonClicked("Quit"), QuitApplication());
-
 	}
 }

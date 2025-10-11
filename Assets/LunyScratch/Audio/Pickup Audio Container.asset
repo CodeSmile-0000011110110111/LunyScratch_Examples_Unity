@@ -9,7 +9,7 @@ AudioContainerElement:
   m_Name: impactMetal_light_001_{-9167014051067684815}
   m_AudioClip: {fileID: 8300000, guid: cbc73bb4dcc2f604a95e37a622df88ac, type: 3}
   m_Volume: 0
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!1233149941 &-8430109672051661829
 AudioContainerElement:
   m_ObjectHideFlags: 1
@@ -19,7 +19,7 @@ AudioContainerElement:
   m_Name: impactMetal_medium_004_{-8430109672051661829}
   m_AudioClip: {fileID: 8300000, guid: b68d9d02faa14254fb30ad3f3b2b7e06, type: 3}
   m_Volume: 0
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!1233149941 &-5964575556832697392
 AudioContainerElement:
   m_ObjectHideFlags: 1
@@ -29,7 +29,7 @@ AudioContainerElement:
   m_Name: impactMetal_light_002_{-5964575556832697392}
   m_AudioClip: {fileID: 8300000, guid: b5b99c4d5c1e2a347b212087261da453, type: 3}
   m_Volume: 0
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!1233149941 &-5678836442184412965
 AudioContainerElement:
   m_ObjectHideFlags: 1
@@ -39,7 +39,7 @@ AudioContainerElement:
   m_Name: impactMetal_medium_001_{-5678836442184412965}
   m_AudioClip: {fileID: 8300000, guid: b1b7442106cac014084f81986756c220, type: 3}
   m_Volume: 0
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!1233149941 &-2889757913369356651
 AudioContainerElement:
   m_ObjectHideFlags: 1
@@ -49,7 +49,7 @@ AudioContainerElement:
   m_Name: impactMetal_medium_002_{-2889757913369356651}
   m_AudioClip: {fileID: 8300000, guid: e7fc751de9b5f784d85446db96113753, type: 3}
   m_Volume: 0
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!1233149941 &1088169876560584332
 AudioContainerElement:
   m_ObjectHideFlags: 1
@@ -59,7 +59,7 @@ AudioContainerElement:
   m_Name: impactMetal_light_004_{1088169876560584332}
   m_AudioClip: {fileID: 8300000, guid: 02d7d8f0adf09294fa66573aa7fbd868, type: 3}
   m_Volume: 0
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!1233149941 &2212927243783275867
 AudioContainerElement:
   m_ObjectHideFlags: 1
@@ -69,7 +69,7 @@ AudioContainerElement:
   m_Name: impactMetal_medium_003_{2212927243783275867}
   m_AudioClip: {fileID: 8300000, guid: f58e2df0ea64c334986d73685bb5840a, type: 3}
   m_Volume: 0
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!1233149941 &3659815576900236354
 AudioContainerElement:
   m_ObjectHideFlags: 1
@@ -92,7 +92,7 @@ AudioRandomContainer:
   m_AutomaticTriggerTime: 0
   m_LoopCount: 1
   m_VolumeRandomizationRange: {x: 0, y: 0}
-  m_PitchRandomizationRange: {x: 0, y: 142.52872}
+  m_PitchRandomizationRange: {x: -64.3678, y: 142.52872}
   m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
   m_LoopCountRandomizationRange: {x: 0, y: 0}
   m_Elements:
@@ -134,4 +134,4 @@ AudioContainerElement:
   m_Name: impactMetal_medium_000_{9216248739432282958}
   m_AudioClip: {fileID: 8300000, guid: 563131e0148e52c40871cd5a57ade505, type: 3}
   m_Volume: 0
-  m_Enabled: 1
+  m_Enabled: 0

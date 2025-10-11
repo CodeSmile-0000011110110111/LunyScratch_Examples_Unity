@@ -2,8 +2,8 @@
     <ui:VisualElement style="flex-grow: 1; justify-content: center;">
         <ui:VisualElement style="align-items: center;">
             <ui:Label text="Time&apos;s up!" style="align-self: center; font-size: 64px; -unity-font-style: bold; color: rgb(255, 219, 0);" />
-            <ui:VisualElement>
-                <ui:Button text="Try again!" name="TryAgain" style="margin-top: 60px; font-size: 32px;" />
+            <ui:VisualElement style="margin-top: 200px;">
+                <ui:Button text="Try again!" name="TryAgain" style="margin-top: 20px; font-size: 32px;" />
                 <ui:Button text="Quit&#x9;" name="Quit" style="margin-top: 20px; font-size: 32px;" />
             </ui:VisualElement>
         </ui:VisualElement>
