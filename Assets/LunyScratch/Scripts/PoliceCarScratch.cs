@@ -26,11 +26,10 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 
 		var progressVar = globalVariables["Progress"];
 		progressVar.Set(0);
-		RepeatForever(new ExecuteBlock(() => progressVar.Add(1)), Wait(20));
+		RepeatForever(new ExecuteBlock(() => progressVar.Add(1)), Wait(15), PlaySound());
 
 		// Use RepeatForeverPhysics for physics-based movement
 		RepeatForeverPhysics(
-
 			// Forward/Backward movement
 			If(IsKeyPressed(Key.W),
 					MoveForward(_moveSpeed), Disable("BrakeLight1"), Disable("BrakeLight2"))
@@ -45,14 +44,6 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 			If(IsKeyPressed(Key.D), TurnRight(_turnSpeed))
 		);
 
-		// RepeatForever(
-		// 	Enable("BlueLight"),
-		// 	Disable("RedLight"),
-		// 	Wait(0.15),
-		// 	Disable("BlueLight"),
-		// 	Enable("RedLight"),
-		// 	Wait(0.12)
-		// );
 		RepeatForever(
 			Enable("RedLight"),
 			Wait(0.16),
@@ -73,7 +64,7 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 		hud.BindVariable("Time", timeVariable);
 
 		When(CollisionEnter(tag: "CompanionCube"),
-			new ExecuteBlock(() => scoreVariable.Add(progressVar * progressVar)),
+			new ExecuteBlock(() => scoreVariable.Add(progressVar * progressVar * progressVar)),
 			IncrementVariable("Time"));
 
 		RepeatForever(Wait(1), DecrementVariable("Time"),
