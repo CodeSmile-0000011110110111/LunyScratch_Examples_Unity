@@ -21,7 +21,8 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 		// don't play minicube sound too often
 		var globalVariables = ScratchRuntime.Singleton.Variables;
 		var globalTimeout = globalVariables["MiniCubeSoundTimeout"];
-		RepeatForever(new ExecuteBlock(() => globalTimeout.Subtract(1)));
+		RepeatForever(new ExecuteBlock(() => globalTimeout.Subtract(1)),
+			If(IsKeyPressed(Key.Escape), ShowMenu()));
 
 		var progressVar = globalVariables["Progress"];
 		progressVar.Set(0);

@@ -26,8 +26,10 @@ public sealed class CompanionCubeScratch : ScratchBehaviour
 					counterVar.Set(Math.Clamp(progressVar.AsNumber(), 1, 33));
 				counterVar.Subtract(1);
 				return counterVar.AsNumber() >= 0;
-			}, InstantiatePrefab("Prefabs/HitEffect")));
+			}, InstantiatePrefab("Prefabs/HitEffect")),
+			PlaySound(), Enable("Lights"), Wait(1), Disable("Lights"));
 		When(CollisionEnter(),
-			If(() => _rigidbody.linearVelocity.sqrMagnitude > _minVelocityForSound * _minVelocityForSound, PlaySound()));
+			If(() => _rigidbody.linearVelocity.sqrMagnitude > _minVelocityForSound * _minVelocityForSound,
+				PlaySound()));
 	}
 }
