@@ -18,12 +18,25 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 	{
 		Run(HideMenu(), ShowHUD());
 
+		// don't play minicube sound too often
+		var globalVariables = ScratchRuntime.Singleton.Variables;
+		var globalTimeout = globalVariables["MiniCubeSoundTimeout"];
+		RepeatForever(new ExecuteBlock(() => globalTimeout.Subtract(1)));
+
+		var progressVar = globalVariables["Progress"];
+		progressVar.Set(0);
+		RepeatForever(new ExecuteBlock(() => progressVar.Add(1)), Wait(20));
+
 		// Use RepeatForeverPhysics for physics-based movement
 		RepeatForeverPhysics(
+
 			// Forward/Backward movement
-			If(IsKeyPressed(Key.W), MoveForward(_moveSpeed))
-				.Else(If(IsKeyPressed(Key.S), MoveBackward(_moveSpeed))
-					.Else(SlowDownMoving(_deceleration))
+			If(IsKeyPressed(Key.W),
+					MoveForward(_moveSpeed), Disable("BrakeLight1"), Disable("BrakeLight2"))
+				.Else(If(IsKeyPressed(Key.S),
+						MoveBackward(_moveSpeed),
+						Enable("BrakeLight1"), Enable("BrakeLight2"))
+					.Else(SlowDownMoving(_deceleration), Disable("BrakeLight1"), Disable("BrakeLight2"))
 				),
 
 			// Steering
@@ -59,12 +72,8 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 		hud.BindVariable("Time", timeVariable);
 
 		When(CollisionEnter(tag: "CompanionCube"),
-			IncrementVariable("Score"),
+			new ExecuteBlock(() => scoreVariable.Add(progressVar * progressVar)),
 			IncrementVariable("Time"));
-
-		// don't play minicube sound too often
-		var globalTimeout = ScratchRuntime.Singleton.Variables["MiniCubeSoundTimeout"];
-		RepeatForever(new ExecuteBlock(() => globalTimeout.Subtract(1)));
 
 		RepeatForever(Wait(1), DecrementVariable("Time"),
 			If(() => timeVariable.AsNumber() <= 0, ShowMenu(),
