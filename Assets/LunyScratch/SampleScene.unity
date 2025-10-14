@@ -4113,6 +4113,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: police
       objectReference: {fileID: 0}
+    - target: {fileID: 1298349994734109789, guid: d07297c9862248f4e8058b142344d0da, type: 3}
+      propertyPath: m_Intensity
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1886051293195648465, guid: d07297c9862248f4e8058b142344d0da, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

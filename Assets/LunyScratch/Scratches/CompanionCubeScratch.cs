@@ -19,15 +19,17 @@ public sealed class CompanionCubeScratch : ScratchBehaviour
 
 		When(CollisionEnter("police"),
 			// play bump sound unconditionally and make cube glow
-			PlaySound(), Enable("Lights"), Wait(1), Disable("Lights"),
+			PlaySound(), Enable("Lights"),
 			// count down from current progress value to spawn more cube instances the longer the game progresses
 			RepeatWhileTrue(() =>
 			{
 				if (counterVar.Number > progressVar.Number)
 					counterVar.Set(Math.Clamp(progressVar.Number, 1, 33));
 				counterVar.Subtract(1);
+				Debug.Log($"[{Time.frameCount}] Spawn gold cube");
 				return counterVar.Number >= 0;
-			}, InstantiatePrefab("Prefabs/HitEffect")));
+			}, InstantiatePrefab("Prefabs/HitEffect")),
+			Wait(1), Disable("Lights"));
 
 		// play sound when ball bumps into anything
 		When(CollisionEnter(),
