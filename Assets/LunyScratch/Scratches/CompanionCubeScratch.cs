@@ -4,6 +4,7 @@ using UnityEngine;
 using static LunyScratch.Blocks;
 
 [DisallowMultipleComponent]
+[RequireComponent(typeof(Rigidbody))]
 public sealed class CompanionCubeScratch : ScratchBehaviour
 {
 	[SerializeField] private Single _minVelocityForSound = 25f;
@@ -26,14 +27,13 @@ public sealed class CompanionCubeScratch : ScratchBehaviour
 				if (counterVar.Number > progressVar.Number)
 					counterVar.Set(Math.Clamp(progressVar.Number, 1, 33));
 				counterVar.Subtract(1);
-				Debug.Log($"[{Time.frameCount}] Spawn gold cube");
 				return counterVar.Number >= 0;
-			}, InstantiatePrefab("Prefabs/HitEffect")),
+			}, CreateInstance("Prefabs/HitEffect")),
 			Wait(1), Disable("Lights"));
 
 		// play sound when ball bumps into anything
 		When(CollisionEnter(),
-			If(IsLinearVelocityGreaterThan(_minVelocityForSound),
+			If(IsVelocityGreater(_minVelocityForSound),
 				PlaySound()));
 	}
 }

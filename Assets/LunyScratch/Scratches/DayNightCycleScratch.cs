@@ -2,7 +2,8 @@ using LunyScratch;
 using System;
 using UnityEngine;
 
-public class DayNightCycleScratch : ScratchBehaviour
+[DisallowMultipleComponent]
+public sealed class DayNightCycleScratch : ScratchBehaviour
 {
 	public Single _timeIncrement = 0.02f;
 

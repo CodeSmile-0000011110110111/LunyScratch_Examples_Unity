@@ -2,7 +2,9 @@ using LunyScratch;
 using UnityEngine;
 using static LunyScratch.Blocks;
 
-public class GoldCubeScratch : ScratchBehaviour
+[DisallowMultipleComponent]
+[RequireComponent(typeof(Rigidbody))]
+public sealed class GoldCubeScratch : ScratchBehaviour
 {
 	private Rigidbody _rigidbody;
 
@@ -12,7 +14,7 @@ public class GoldCubeScratch : ScratchBehaviour
 
 		var globalTimeout = ScratchRuntime.Singleton.Variables["MiniCubeSoundTimeout"];
 		When(CollisionEnter(),
-			If(() => globalTimeout.Number < 0 && _rigidbody.linearVelocity.sqrMagnitude > 10,
+			If(AND(IsVariableLessThan(globalTimeout, 0), IsVelocityGreater(10)),
 				PlaySound(), SetVariable(globalTimeout, 0)));
 	}
 }
