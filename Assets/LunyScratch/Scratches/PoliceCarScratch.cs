@@ -70,7 +70,7 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 			If(() => timeVariable.Number <= 0, ShowMenu(),
 				SetCameraTrackingTarget(null),
 				Wait(0.5),
-				new ExecuteBlock(() => enabled = false)));
+				DisableComponent()));
 
 		// must run globally because we Disable() the car and thus all object sequences will stop updating
 		Scratch.When(ButtonClicked("TryAgain"), ReloadCurrentScene());
