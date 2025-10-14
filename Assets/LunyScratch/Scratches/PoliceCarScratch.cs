@@ -64,9 +64,12 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 		);
 
 		When(CollisionEnter(tag: "CompanionCube"),
-			//AddVariable(scoreVariable, progressVar * progressVar * progressVar), // doesn't work that way
-			new ExecuteBlock(() => scoreVariable.Add(progressVar * progressVar * progressVar)),
-			IncrementVariable("Time"));
+			IncrementVariable("Time"),
+			// add 'power of three' times the progress to score
+			SetVariable(Variables["temp"], progressVar),
+			MultiplyVariable(Variables["temp"], progressVar),
+			MultiplyVariable(Variables["temp"], progressVar),
+			AddVariable(scoreVariable, Variables["temp"]));
 
 		RepeatForever(Wait(1), DecrementVariable("Time"),
 			If(IsVariableLessOrEqual(timeVariable, 0),
@@ -77,17 +80,8 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 		Scratch.When(ButtonClicked("Quit"), QuitApplication());
 
 		// TODO:
-		// IsVariable(name, operator) or IsVariableEqual/Greater(name)
 		// GlobalVariable variants
-		// variable add/sub/mul/div etc
-		// add name to each variable for debugging and binding
-		// AsNumber => property 'number'
-
-		// UI Binding: update to use variable's name
-
 		// CollisionEnter: allow specifying multiple tags or names
-		// add IsVelocity tests
 		// add PlaySound with timeout?
-		// If/When: allow multiple conditions, events (AND or OR)
 	}
 }
