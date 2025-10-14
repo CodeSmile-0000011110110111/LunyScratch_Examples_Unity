@@ -25,10 +25,10 @@ public sealed class CompanionCubeScratch : ScratchBehaviour
 			RepeatWhileTrue(() =>
 			{
 				// count down from current progress value to spawn more cube instances the longer the game progresses
-				if (counterVar.AsNumber() > progressVar.AsNumber())
-					counterVar.Set(Math.Clamp(progressVar.AsNumber(), 1, 33));
+				if (counterVar.Number > progressVar.Number)
+					counterVar.Set(Math.Clamp(progressVar.Number, 1, 33));
 				counterVar.Subtract(1);
-				return counterVar.AsNumber() >= 0;
+				return counterVar.Number >= 0;
 			}, InstantiatePrefab("Prefabs/HitEffect")),
 
 			// play bump sound unconditionally and make cube glow

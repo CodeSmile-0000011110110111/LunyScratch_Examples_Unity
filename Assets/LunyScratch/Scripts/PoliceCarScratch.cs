@@ -68,7 +68,7 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 			IncrementVariable("Time"));
 
 		RepeatForever(Wait(1), DecrementVariable("Time"),
-			If(() => timeVariable.AsNumber() <= 0, ShowMenu(),
+			If(() => timeVariable.Number <= 0, ShowMenu(),
 				new ExecuteBlock(() => GameObject.Find("CinemachineCamera").GetComponent<CinemachineCamera>().Target.TrackingTarget = null),
 				Wait(0.5),
 				new ExecuteBlock(() => enabled = false)));
