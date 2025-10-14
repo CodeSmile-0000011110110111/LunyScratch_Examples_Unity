@@ -1,6 +1,5 @@
 using LunyScratch;
 using System;
-using Unity.Cinemachine;
 using UnityEngine;
 using static LunyScratch.Blocks;
 
@@ -69,7 +68,7 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 
 		RepeatForever(Wait(1), DecrementVariable("Time"),
 			If(() => timeVariable.Number <= 0, ShowMenu(),
-				new ExecuteBlock(() => GameObject.Find("CinemachineCamera").GetComponent<CinemachineCamera>().Target.TrackingTarget = null),
+				SetCameraTrackingTarget(null),
 				Wait(0.5),
 				new ExecuteBlock(() => enabled = false)));
 
