@@ -26,12 +26,14 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 		hud.BindVariable(timeVariable);
 		Run(HideMenu(), ShowHUD());
 		RepeatForever(If(IsKeyPressed(Key.Escape), ShowMenu()));
+		// must run globally because we Disable() the car and thus all object sequences will stop updating
+		Scratch.When(ButtonClicked("TryAgain"), ReloadCurrentScene());
+		Scratch.When(ButtonClicked("Quit"), QuitApplication());
 
-		// don't play minicube sound too often
-		RepeatForever(SubtractVariable(globalVariables["MiniCubeSoundTimeout"], 1));
-
-		// increment progress every so often
-		RepeatForever(IncrementVariable(progressVar), Wait(15), PlaySound());
+		// tick down time, and eventually game over
+		RepeatForever(Wait(1), DecrementVariable("Time"),
+			If(IsVariableLessOrEqual(timeVariable, 0),
+				ShowMenu(), SetCameraTrackingTarget(null), Wait(0.5), DisableComponent()));
 
 		// Use RepeatForeverPhysics for physics-based movement
 		var enableBrakeLights = Sequence(Enable("BrakeLight1"), Enable("BrakeLight2"));
@@ -50,6 +52,16 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 			If(IsKeyPressed(Key.D), TurnRight(_turnSpeed))
 		);
 
+		// add score and time on ball collision
+		When(CollisionEnter(tag: "CompanionCube"),
+			IncrementVariable("Time"),
+			// add 'power of three' times the progress to score
+			SetVariable(Variables["temp"], progressVar),
+			MultiplyVariable(Variables["temp"], progressVar),
+			MultiplyVariable(Variables["temp"], progressVar),
+			AddVariable(scoreVariable, Variables["temp"]));
+
+		// blinking signal lights
 		RepeatForever(
 			Enable("RedLight"),
 			Wait(0.16),
@@ -63,25 +75,16 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 			Wait(0.17)
 		);
 
-		When(CollisionEnter(tag: "CompanionCube"),
-			IncrementVariable("Time"),
-			// add 'power of three' times the progress to score
-			SetVariable(Variables["temp"], progressVar),
-			MultiplyVariable(Variables["temp"], progressVar),
-			MultiplyVariable(Variables["temp"], progressVar),
-			AddVariable(scoreVariable, Variables["temp"]));
-
-		RepeatForever(Wait(1), DecrementVariable("Time"),
-			If(IsVariableLessOrEqual(timeVariable, 0),
-				ShowMenu(), SetCameraTrackingTarget(null), Wait(0.5), DisableComponent()));
-
-		// must run globally because we Disable() the car and thus all object sequences will stop updating
-		Scratch.When(ButtonClicked("TryAgain"), ReloadCurrentScene());
-		Scratch.When(ButtonClicked("Quit"), QuitApplication());
+		// Helpers
+		// don't play minicube sound too often
+		RepeatForever(SubtractVariable(globalVariables["MiniCubeSoundTimeout"], 1));
+		// increment progress every so often
+		RepeatForever(IncrementVariable(progressVar), Wait(15), PlaySound());
 
 		// TODO:
 		// GlobalVariable variants
 		// CollisionEnter: allow specifying multiple tags or names
 		// add PlaySound with timeout?
+		// add action map input conditions for When blocks: When(OnMove, .. where to get move value from??)
 	}
 }
