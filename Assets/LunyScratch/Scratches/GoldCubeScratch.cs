@@ -13,6 +13,6 @@ public class GoldCubeScratch : ScratchBehaviour
 		var globalTimeout = ScratchRuntime.Singleton.Variables["MiniCubeSoundTimeout"];
 		When(CollisionEnter(),
 			If(() => globalTimeout.Number < 0 && _rigidbody.linearVelocity.sqrMagnitude > 10,
-				PlaySound(), new ExecuteBlock(() => globalTimeout.Set(0))));
+				PlaySound(), SetVariable(globalTimeout, 0)));
 	}
 }

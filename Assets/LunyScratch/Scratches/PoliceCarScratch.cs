@@ -15,27 +15,34 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 
 	protected override void OnBehaviourAwake()
 	{
+		var globalVariables = ScratchRuntime.Singleton.Variables;
+		var progressVar = globalVariables["Progress"];
+		var scoreVariable = Variables.Set("Score", 0);
+		var timeVariable = Variables.Set("Time", _startTimeInSeconds);
+
+		// Handle UI State
+		var hud = ScratchRuntime.Singleton.HUD;
+		hud.BindVariable(scoreVariable);
+		hud.BindVariable(timeVariable);
 		Run(HideMenu(), ShowHUD());
+		RepeatForever(If(IsKeyPressed(Key.Escape), ShowMenu()));
 
 		// don't play minicube sound too often
-		var globalVariables = ScratchRuntime.Singleton.Variables;
-		var globalTimeout = globalVariables["MiniCubeSoundTimeout"];
-		RepeatForever(new ExecuteBlock(() => globalTimeout.Subtract(1)),
-			If(IsKeyPressed(Key.Escape), ShowMenu()));
+		RepeatForever(SubtractVariable(globalVariables["MiniCubeSoundTimeout"], 1));
 
-		var progressVar = globalVariables["Progress"];
-		progressVar.Set(0);
-		RepeatForever(new ExecuteBlock(() => progressVar.Add(1)), Wait(15), PlaySound());
+		// increment progress every so often
+		RepeatForever(IncrementVariable(progressVar), Wait(15), PlaySound());
 
 		// Use RepeatForeverPhysics for physics-based movement
+		var enableBrakeLights = Sequence(Enable("BrakeLight1"), Enable("BrakeLight2"));
+		var disableBrakeLights = Sequence(Disable("BrakeLight1"), Disable("BrakeLight2"));
 		RepeatForeverPhysics(
 			// Forward/Backward movement
 			If(IsKeyPressed(Key.W),
-					MoveForward(_moveSpeed), Disable("BrakeLight1"), Disable("BrakeLight2"))
+					MoveForward(_moveSpeed), disableBrakeLights)
 				.Else(If(IsKeyPressed(Key.S),
-						MoveBackward(_moveSpeed),
-						Enable("BrakeLight1"), Enable("BrakeLight2"))
-					.Else(SlowDownMoving(_deceleration), Disable("BrakeLight1"), Disable("BrakeLight2"))
+						MoveBackward(_moveSpeed), enableBrakeLights)
+					.Else(SlowDownMoving(_deceleration), disableBrakeLights)
 				),
 
 			// Steering
@@ -56,21 +63,14 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 			Wait(0.17)
 		);
 
-		var scoreVariable = Variables.Set("Score", 0);
-		var timeVariable = Variables.Set("Time", _startTimeInSeconds);
-		var hud = ScratchRuntime.Singleton.HUD;
-		hud.BindVariable("Score", scoreVariable);
-		hud.BindVariable("Time", timeVariable);
-
 		When(CollisionEnter(tag: "CompanionCube"),
+			//AddVariable(scoreVariable, progressVar * progressVar * progressVar), // doesn't work that way
 			new ExecuteBlock(() => scoreVariable.Add(progressVar * progressVar * progressVar)),
 			IncrementVariable("Time"));
 
 		RepeatForever(Wait(1), DecrementVariable("Time"),
-			If(() => timeVariable.Number <= 0, ShowMenu(),
-				SetCameraTrackingTarget(null),
-				Wait(0.5),
-				DisableComponent()));
+			If(IsVariableLessOrEqual(timeVariable, 0),
+				ShowMenu(), SetCameraTrackingTarget(null), Wait(0.5), DisableComponent()));
 
 		// must run globally because we Disable() the car and thus all object sequences will stop updating
 		Scratch.When(ButtonClicked("TryAgain"), ReloadCurrentScene());
