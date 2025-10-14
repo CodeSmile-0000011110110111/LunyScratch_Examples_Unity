@@ -18,18 +18,25 @@ public sealed class CompanionCubeScratch : ScratchBehaviour
 		var progressVar = globalVariables["Progress"];
 		var counterVar = Variables["Counter"];
 
+		// increment counter to be able to hit the ball again
 		RepeatForever(new ExecuteBlock(() => counterVar.Add(5)), Wait(1));
+
 		When(CollisionEnter("police"),
 			RepeatWhileTrue(() =>
 			{
+				// count down from current progress value to spawn more cube instances the longer the game progresses
 				if (counterVar.AsNumber() > progressVar.AsNumber())
 					counterVar.Set(Math.Clamp(progressVar.AsNumber(), 1, 33));
 				counterVar.Subtract(1);
 				return counterVar.AsNumber() >= 0;
 			}, InstantiatePrefab("Prefabs/HitEffect")),
+
+			// play bump sound unconditionally and make cube glow
 			PlaySound(), Enable("Lights"), Wait(1), Disable("Lights"));
+
+		// play sound when ball bumps into anything
 		When(CollisionEnter(),
-			If(() => _rigidbody.linearVelocity.sqrMagnitude > _minVelocityForSound * _minVelocityForSound,
+			If(IsLinearVelocityGreaterThan(_minVelocityForSound),
 				PlaySound()));
 	}
 }

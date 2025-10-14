@@ -82,7 +82,10 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 		// GlobalVariable variants
 		// variable add/sub/mul/div etc
 		// add name to each variable for debugging and binding
-		// Binding: update to use variable's name
+		// AsNumber => property 'number'
+
+		// UI Binding: update to use variable's name
+
 		// CollisionEnter: allow specifying multiple tags or names
 		// add IsVelocity tests
 		// add PlaySound with timeout?

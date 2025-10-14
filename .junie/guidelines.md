@@ -224,3 +224,26 @@ Usage Example
 - When(CollisionEnter(tag:"CompanionCube"),
     Say("Police collided with cube!"),
     IncrementVariable("Score"));
+
+
+
+# LunyScratch Core – Local Guidelines Update (2025-10-14)
+
+Ambient execution context is forbidden
+- Do not use any ambient/thread-static execution context (e.g., ScratchExecution.CurrentContext) to access IScratchContext.
+- All blocks must receive IScratchContext only through method parameters provided by the runner (Run/OnEnter/OnExit) or through delegates that accept IScratchContext.
+
+Condition and flow evaluation
+- Condition blocks must be implemented as dedicated IScratchBlock classes (do not inline new ConditionBlock(...) in public factories). Provide private sealed classes per condition for better debugging. 
+- Execute blocks must also be implemented as dedicated IScratchBlock classes (avoid new ExecuteBlock(...) in public factories); expose factory methods returning IScratchBlock.
+- Conditions that need context must evaluate during Run using the provided IScratchContext. Avoid any global state.
+- If/Else branching must evaluate conditions when IScratchContext is available (during Run), not in OnEnter without context.
+
+Coding style for conditions
+- Do not write single-line condition lambdas. Prefer multi-line blocks for clarity and easier breakpointing.
+- Keep comparisons explicit (no ternary or expression-bodied lambdas for non-trivial checks).
+
+General
+- Keep Core engine-agnostic and free of engine SDK types.
+- Prefer explicit Double/Boolean/String types in public APIs.
+- Do not cache engine objects inside blocks; use IScratchContext for lookups/caching.
