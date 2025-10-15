@@ -15,8 +15,8 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 
 	protected override void OnBehaviourAwake()
 	{
-		var globalVariables = ScratchRuntime.Singleton.Variables;
-		var progressVar = globalVariables["Progress"];
+		//var globalVariables = ScratchRuntime.Singleton.Variables;
+		var progressVar = GlobalVariables["Progress"];
 		var scoreVariable = Variables.Set("Score", 0);
 		var timeVariable = Variables.Set("Time", _startTimeInSeconds);
 
@@ -77,7 +77,7 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 
 		// Helpers
 		// don't play minicube sound too often
-		RepeatForever(SubtractVariable(globalVariables["MiniCubeSoundTimeout"], 1));
+		RepeatForever(SubtractVariable(GlobalVariables["MiniCubeSoundTimeout"], 1));
 		// increment progress every so often
 		RepeatForever(IncrementVariable(progressVar), Wait(15), PlaySound());
 

@@ -11,8 +11,7 @@ public sealed class CompanionCubeScratch : ScratchBehaviour
 
 	private void Start()
 	{
-		var globalVariables = ScratchRuntime.Singleton.Variables;
-		var progressVar = globalVariables["Progress"];
+		var progressVar = GlobalVariables["Progress"];
 		var counterVar = Variables["Counter"];
 
 		// increment counter to be able to hit the ball again
@@ -25,7 +24,7 @@ public sealed class CompanionCubeScratch : ScratchBehaviour
 			RepeatWhileTrue(() =>
 			{
 				if (counterVar.Number > progressVar.Number)
-					counterVar.Set(Math.Clamp(progressVar.Number, 1, 33));
+					counterVar.Set(Math.Clamp(progressVar.Number, 1, 50));
 				counterVar.Subtract(1);
 				return counterVar.Number >= 0;
 			}, CreateInstance("Prefabs/HitEffect")),
