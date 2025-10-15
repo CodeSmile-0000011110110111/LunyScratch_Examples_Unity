@@ -12,7 +12,7 @@ public sealed class GoldCubeScratch : ScratchBehaviour
 	{
 		_rigidbody = GetComponent<Rigidbody>();
 
-		var globalTimeout = ScratchRuntime.Singleton.Variables["MiniCubeSoundTimeout"];
+		var globalTimeout = GlobalVariables["MiniCubeSoundTimeout"];
 		When(CollisionEnter(),
 			If(AND(IsVariableLessThan(globalTimeout, 0), IsVelocityGreater(10)),
 				PlaySound(), SetVariable(globalTimeout, 0)));
