@@ -162,8 +162,8 @@ $enginePlusEditorCyclo = $engineM.CyclomaticProxy + $editor.CyclomaticProxy
 $enginePlusEditorCog   = $engineM.CognitiveProxy + $editor.CognitiveProxy
 
 $totalLoc = $core.LOC + $enginePlusEditorLoc
-$corePct = if ($totalLoc -gt 0) { [math]::Round(($core.LOC / $totalLoc) * 100, 1) } else { 0 }
-$engEdPct = if ($totalLoc -gt 0) { [math]::Round(($enginePlusEditorLoc / $totalLoc) * 100, 1) } else { 0 }
+$corePct = if ($totalLoc -gt 0) { [math]::Round(($core.LOC / $totalLoc) * 100, 0) } else { 0 }
+$engEdPct = if ($totalLoc -gt 0) { [math]::Round(($enginePlusEditorLoc / $totalLoc) * 100, 0) } else { 0 }
 
 $baseline = Load-Baseline $engine
 
@@ -207,8 +207,8 @@ $engEdMiRating  = Describe-Range -value $engEdMI -goodMax 90 -warnMax 80 -Higher
 $coreDenRating  = Describe-Range -value $core.CyclomaticPerLOC -goodMax 0.12 -warnMax 0.20
 $engEdDenRating = Describe-Range -value $engEdDensity -goodMax 0.12 -warnMax 0.20
 Write-Host '--- Baselines & Ranges ---'
-Write-Host 'Maintainability ranges: >=90 Good, 80–90 Watch, <80 Needs Attention'
-Write-Host 'Cyclomatic density ranges (per LOC): <0.12 Good, 0.12–0.20 Watch, >0.20 High'
+Write-Host 'Maintainability ranges: >=90 Good, 80-90 Watch, <80 Needs Attention'
+Write-Host 'Cyclomatic density ranges (per LOC): <0.12 Good, 0.12-0.20 Watch, >0.20 High'
 Write-Host ('Core Ratings        : Maintainability={0} | CyclomaticDensity={1}' -f $coreMiRating, $coreDenRating)
 Write-Host ('Eng+Ed Ratings      : Maintainability={0} | CyclomaticDensity={1}' -f $engEdMiRating, $engEdDenRating)
 Write-Host ''
@@ -235,5 +235,5 @@ $summary = [pscustomobject]@{
 }
 
 # Print compact JSON for CI log readability
-Write-Host '--- JSON Summary ---'
-$summary | ConvertTo-Json -Depth 5
+# Write-Host '--- JSON Summary ---'
+# $summary | ConvertTo-Json -Depth 5

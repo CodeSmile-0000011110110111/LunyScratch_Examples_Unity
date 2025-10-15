@@ -5,7 +5,7 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public sealed class DayNightCycleScratch : ScratchBehaviour
 {
-	public Single _timeIncrement = 0.02f;
+	[SerializeField] private Single _timeIncrement = 0.02f;
 
 	private void Start()
 	{
