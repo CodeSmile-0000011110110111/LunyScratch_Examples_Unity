@@ -15,7 +15,6 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 
 	protected override void OnCreateComponent()
 	{
-		//var globalVariables = ScratchRuntime.Singleton.Variables;
 		var progressVar = GlobalVariables["Progress"];
 		var scoreVariable = Variables.Set("Score", 0);
 		var timeVariable = Variables.Set("Time", _startTimeInSeconds);
