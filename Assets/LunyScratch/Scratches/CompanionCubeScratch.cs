@@ -9,7 +9,7 @@ public sealed class CompanionCubeScratch : ScratchBehaviour
 {
 	[SerializeField] private Single _minVelocityForSound = 25f;
 
-	private void Start()
+	protected override void OnScratchReady()
 	{
 		var progressVar = GlobalVariables["Progress"];
 		var counterVar = Variables["Counter"];

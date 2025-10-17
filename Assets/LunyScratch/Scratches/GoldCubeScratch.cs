@@ -6,12 +6,8 @@ using static LunyScratch.Blocks;
 [RequireComponent(typeof(Rigidbody))]
 public sealed class GoldCubeScratch : ScratchBehaviour
 {
-	private Rigidbody _rigidbody;
-
-	private void Start()
+	protected override void OnScratchReady()
 	{
-		_rigidbody = GetComponent<Rigidbody>();
-
 		var globalTimeout = GlobalVariables["MiniCubeSoundTimeout"];
 		When(CollisionEnter(),
 			If(AND(IsVariableLessThan(globalTimeout, 0), IsVelocityGreater(10)),

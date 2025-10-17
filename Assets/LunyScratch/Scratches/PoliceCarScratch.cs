@@ -13,7 +13,7 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 	[SerializeField] private Single _deceleration = 0.85f;
 	[SerializeField] private Int32 _startTimeInSeconds = 30;
 
-	protected override void OnCreateComponent()
+	protected override void OnScratchReady()
 	{
 		var progressVar = GlobalVariables["Progress"];
 		var scoreVariable = Variables.Set("Score", 0);
@@ -23,7 +23,7 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 		HUD.BindVariable(scoreVariable);
 		HUD.BindVariable(timeVariable);
 		Run(HideMenu(), ShowHUD());
-		RepeatForever(If(IsKeyPressed(Key.Escape), ShowMenu()));
+		RepeatForever(If(IsKeyJustPressed(Key.Escape), ShowMenu()));
 		// must run globally because we Disable() the car and thus all object sequences will stop updating
 		Scratch.When(ButtonClicked("TryAgain"), ReloadCurrentScene());
 		Scratch.When(ButtonClicked("Quit"), QuitApplication());

@@ -8,5 +8,5 @@ public sealed class HitEffectScratch : ScratchBehaviour
 {
 	[SerializeField] private Double _timeToLiveInSeconds = 3;
 
-	private void Start() => Run(Wait(_timeToLiveInSeconds), DestroySelf());
+	protected override void OnScratchReady() => Run(Wait(_timeToLiveInSeconds), DestroySelf());
 }
