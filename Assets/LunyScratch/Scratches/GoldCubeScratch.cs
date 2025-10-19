@@ -10,7 +10,7 @@ public sealed class GoldCubeScratch : ScratchBehaviour
 	{
 		var globalTimeout = GlobalVariables["MiniCubeSoundTimeout"];
 		When(CollisionEnter(),
-			If(AND(IsVariableLessThan(globalTimeout, 0), IsVelocityGreater(10)),
+			If(AND(IsVariableLessThan(globalTimeout, 0), IsCurrentSpeedGreater(10)),
 				PlaySound(), SetVariable(globalTimeout, 0)));
 	}
 }

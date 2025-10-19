@@ -32,7 +32,7 @@ public sealed class CompanionCubeScratch : ScratchBehaviour
 
 		// play sound when ball bumps into anything
 		When(CollisionEnter(),
-			If(IsVelocityGreater(_minVelocityForSound),
+			If(IsCurrentSpeedGreater(_minVelocityForSound),
 				PlaySound()));
 	}
 }

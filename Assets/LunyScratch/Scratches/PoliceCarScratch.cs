@@ -46,8 +46,9 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 				),
 
 			// Steering
-			If(IsKeyPressed(Key.A), TurnLeft(_turnSpeed)),
-			If(IsKeyPressed(Key.D), TurnRight(_turnSpeed))
+			If(IsCurrentSpeedGreater(10),
+				If(IsKeyPressed(Key.A), TurnLeft(_turnSpeed)),
+				If(IsKeyPressed(Key.D), TurnRight(_turnSpeed)))
 		);
 
 		// add score and time on ball collision
