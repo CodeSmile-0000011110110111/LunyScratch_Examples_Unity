@@ -17,6 +17,8 @@ public sealed class CompanionCubeScratch : ScratchBehaviour
 		// increment counter to be able to hit the ball again
 		RepeatForever(AddVariable(counterVar, 5), Wait(1));
 
+		Run(Disable("Lights"));
+
 		When(CollisionEnter("police"),
 			// play bump sound unconditionally and make cube glow
 			PlaySound(), Enable("Lights"),

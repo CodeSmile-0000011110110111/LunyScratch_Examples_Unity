@@ -22,10 +22,13 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 		// Handle UI State
 		HUD.BindVariable(scoreVariable);
 		HUD.BindVariable(timeVariable);
+
 		Run(HideMenu(), ShowHUD());
 		RepeatForever(If(IsKeyJustPressed(Key.Escape), ShowMenu()));
+
 		// must run globally because we Disable() the car and thus all object sequences will stop updating
 		Scratch.When(ButtonClicked("TryAgain"), ReloadCurrentScene());
+
 		Scratch.When(ButtonClicked("Quit"), QuitApplication());
 
 		// tick down time, and eventually game over
