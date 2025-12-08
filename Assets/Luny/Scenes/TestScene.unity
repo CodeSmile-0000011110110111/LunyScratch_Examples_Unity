@@ -444,10 +444,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ambulance
       objectReference: {fileID: 0}
-    - target: {fileID: 2432643640387579668, guid: 662b1878b225a7649b9c7ca052e37968, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4136365149190961242, guid: 662b1878b225a7649b9c7ca052e37968, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -613,21 +609,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 38677470779886002, guid: 3f20e5e15c4ded141bcd65ebe36d93be, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 250199194846406244, guid: 3f20e5e15c4ded141bcd65ebe36d93be, type: 3}
       propertyPath: m_Name
       value: firetruck
-      objectReference: {fileID: 0}
-    - target: {fileID: 250199194846406244, guid: 3f20e5e15c4ded141bcd65ebe36d93be, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5629487729875498067, guid: 3f20e5e15c4ded141bcd65ebe36d93be, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6935326687345477406, guid: 3f20e5e15c4ded141bcd65ebe36d93be, type: 3}
       propertyPath: m_LocalPosition.x
@@ -667,10 +651,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6935326687345477406, guid: 3f20e5e15c4ded141bcd65ebe36d93be, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7711945837507406314, guid: 3f20e5e15c4ded141bcd65ebe36d93be, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -729,10 +709,6 @@ PrefabInstance:
     - target: {fileID: 3433593686855150612, guid: 6cb347f158d988947a03e1062e068733, type: 3}
       propertyPath: m_Name
       value: garbage-truck
-      objectReference: {fileID: 0}
-    - target: {fileID: 3433593686855150612, guid: 6cb347f158d988947a03e1062e068733, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
