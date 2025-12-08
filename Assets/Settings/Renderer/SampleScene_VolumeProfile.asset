@@ -34,6 +34,9 @@ MonoBehaviour:
   highQualityFiltering:
     m_OverrideState: 1
     m_Value: 1
+  filter:
+    m_OverrideState: 0
+    m_Value: 0
   downscale:
     m_OverrideState: 0
     m_Value: 0
@@ -573,10 +576,10 @@ MonoBehaviour:
     m_Value: 14.2
   aperture:
     m_OverrideState: 1
-    m_Value: 3.7
+    m_Value: 8.7
   focalLength:
     m_OverrideState: 1
-    m_Value: 137
+    m_Value: 38
   bladeCount:
     m_OverrideState: 0
     m_Value: 7
