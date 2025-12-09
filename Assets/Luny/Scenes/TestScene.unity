@@ -307,8 +307,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0149220005, y: -0.9393605, z: 0.041175187, w: -0.34012324}
-  m_LocalPosition: {x: -5.4905367, y: 1.188828, z: 6.414548}
+  m_LocalRotation: {x: 0.1742047, y: 0.46945068, z: -0.09512413, w: 0.8603605}
+  m_LocalPosition: {x: -5.8452387, y: 2.377796, z: -3.502762}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -660,12 +660,12 @@ MonoBehaviour:
     rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 1
-  m_colorMode: 3
+  m_colorMode: 2
   m_fontColorGradient:
     topLeft: {r: 1, g: 0, b: 0, a: 1}
-    topRight: {r: 0, g: 0, b: 1, a: 1}
+    topRight: {r: 1, g: 0, b: 0, a: 1}
     bottomLeft: {r: 1, g: 1, b: 0, a: 1}
-    bottomRight: {r: 0.35536385, g: 1, b: 0, a: 1}
+    bottomRight: {r: 1, g: 1, b: 0, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
@@ -1040,9 +1040,9 @@ SceneRoots:
   - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
+  - {fileID: 1358065882}
   - {fileID: 275778626}
   - {fileID: 1420833647}
   - {fileID: 2940996401358558973}
   - {fileID: 914368787}
   - {fileID: 8024274329634588126}
-  - {fileID: 1358065882}
