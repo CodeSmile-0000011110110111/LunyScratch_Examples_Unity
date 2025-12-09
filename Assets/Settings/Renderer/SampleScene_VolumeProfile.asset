@@ -30,7 +30,7 @@ MonoBehaviour:
     m_Value: 65472
   tint:
     m_OverrideState: 0
-    m_Value: {r: 0, g: 0.0688959, b: 0.11320752, a: 1}
+    m_Value: {r: 1, g: 0.9622974, b: 0, a: 1}
   highQualityFiltering:
     m_OverrideState: 1
     m_Value: 1
@@ -62,22 +62,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5e1dc532bcb41949b58bc4f2abfbb7e, type: 3}
   m_Name: LensDistortion
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   intensity:
-    m_OverrideState: 0
-    m_Value: 0.06
+    m_OverrideState: 1
+    m_Value: 0.23
   xMultiplier:
-    m_OverrideState: 0
-    m_Value: 1
+    m_OverrideState: 1
+    m_Value: 0.861
   yMultiplier:
-    m_OverrideState: 0
-    m_Value: 1
+    m_OverrideState: 1
+    m_Value: 0.397
   center:
     m_OverrideState: 0
     m_Value: {x: 0.5, y: 0.5}
   scale:
-    m_OverrideState: 0
-    m_Value: 1
+    m_OverrideState: 1
+    m_Value: 1.03
 --- !u!114 &-4317289934762853730
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -166,7 +166,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.2
+    m_Value: 0.256
   smoothness:
     m_OverrideState: 0
     m_Value: 0.2
@@ -188,13 +188,13 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: -0.101102926}
+    m_Value: {x: 1, y: 1, z: 1, w: -0.027650673}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: -0.2022059}
+    m_Value: {x: 1, y: 1, z: 1, w: -0.14690453}
   highlights:
-    m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: -0.20220591}
+    m_OverrideState: 0
+    m_Value: {x: 1, y: 1, z: 1, w: -0.08678092}
   shadowsStart:
     m_OverrideState: 0
     m_Value: 0
@@ -219,10 +219,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdfbdbb87d3286943a057f7791b43141, type: 3}
   m_Name: ChannelMixer
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   redOutRedIn:
     m_OverrideState: 1
-    m_Value: 70
+    m_Value: 58
   redOutGreenIn:
     m_OverrideState: 1
     m_Value: 34
@@ -262,10 +262,10 @@ MonoBehaviour:
   active: 1
   temperature:
     m_OverrideState: 1
-    m_Value: 78
+    m_Value: 57
   tint:
     m_OverrideState: 1
-    m_Value: -54
+    m_Value: -50
 --- !u!114 &-147750824507841793
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -278,10 +278,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb60a22f311433c4c962b888d1393f88, type: 3}
   m_Name: PaniniProjection
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   distance:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.285
   cropToFit:
     m_OverrideState: 1
     m_Value: 1
@@ -573,13 +573,13 @@ MonoBehaviour:
     m_Value: 0
   focusDistance:
     m_OverrideState: 1
-    m_Value: 14.2
+    m_Value: 3.5
   aperture:
     m_OverrideState: 1
     m_Value: 8.7
   focalLength:
     m_OverrideState: 1
-    m_Value: 38
+    m_Value: 84
   bladeCount:
     m_OverrideState: 0
     m_Value: 7
@@ -604,7 +604,7 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.16
+    m_Value: 0.083
 --- !u!114 &7210272449365708627
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -670,19 +670,19 @@ MonoBehaviour:
   active: 1
   postExposure:
     m_OverrideState: 1
-    m_Value: -0.2
+    m_Value: -0.33
   contrast:
     m_OverrideState: 1
-    m_Value: 6
+    m_Value: 7
   colorFilter:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   hueShift:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: -5
   saturation:
     m_OverrideState: 1
-    m_Value: -10
+    m_Value: 6
 --- !u!114 &8490571507603572208
 MonoBehaviour:
   m_ObjectHideFlags: 3
