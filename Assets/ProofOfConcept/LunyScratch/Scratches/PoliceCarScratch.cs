@@ -34,19 +34,16 @@ public sealed class PoliceCarScratch : ScratchBehaviour
 		// tick down time, and eventually game over
 		RepeatForever(Wait(1), DecrementVariable("Time"),
 			If(IsVariableLessOrEqual(timeVariable, 0),
-				ShowMenu(), SetCameraTrackingTarget(null), Wait(0.5), DisableComponent()));
+				ShowMenu(), SetCameraTrackingTarget(), Wait(0.5), DisableComponent()));
 
 		// Use RepeatForeverPhysics for physics-based movement
 		var enableBrakeLights = Sequence(Enable("BrakeLight1"), Enable("BrakeLight2"));
 		var disableBrakeLights = Sequence(Disable("BrakeLight1"), Disable("BrakeLight2"));
 		RepeatForeverPhysics(
 			// Forward/Backward movement
-			If(IsKeyPressed(Key.W),
-					MoveForward(_moveSpeed), disableBrakeLights)
-				.Else(If(IsKeyPressed(Key.S),
-						MoveBackward(_moveSpeed), enableBrakeLights)
-					.Else(SlowDownMoving(_deceleration), disableBrakeLights)
-				),
+			If(IsKeyPressed(Key.W), MoveForward(_moveSpeed), disableBrakeLights)
+				.Else(If(IsKeyPressed(Key.S), MoveBackward(_moveSpeed), enableBrakeLights))
+				.Else(SlowDownMoving(_deceleration), disableBrakeLights),
 
 			// Steering
 			If(IsCurrentSpeedGreater(10),
