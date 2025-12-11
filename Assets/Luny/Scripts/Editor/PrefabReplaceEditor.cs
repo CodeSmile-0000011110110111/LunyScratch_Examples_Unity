@@ -54,7 +54,7 @@ public class PrefabReplaceEditor : EditorWindow
                 }
             }
         }
-        
+
 
         // Replace prefab instances
         List<GameObject> newChildren = new List<GameObject>();
