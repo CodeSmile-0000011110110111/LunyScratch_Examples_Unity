@@ -42,9 +42,6 @@ public sealed class RagdollController : MonoBehaviour
 
 	private IEnumerator SetRagdollState(Boolean isRagdoll)
 	{
-		// prevents limbs from being offset when disabling ragdoll mode again
-		yield return new WaitForEndOfFrame();
-
 		// TODO: keep momentum from animation?
 
 		if (_rigidbodies != null)
@@ -56,6 +53,9 @@ public sealed class RagdollController : MonoBehaviour
 		if (!isRagdoll)
 			RestoreInitialPose();
 
+		// prevents limbs from being offset when disabling ragdoll mode again
+		yield return new WaitForFixedUpdate();
+
 		if (_animator != null)
 			_animator.enabled = !isRagdoll;
 		if (_animation != null)
@@ -64,10 +64,13 @@ public sealed class RagdollController : MonoBehaviour
 
 	private void RestoreInitialPose()
 	{
-		for (var i = 0; i < _transforms.Length; i++)
+		if (_transforms != null)
 		{
-			_transforms[i].localPosition = _initialPositions[i];
-			_transforms[i].localRotation = _initialRotations[i];
+			for (var i = 0; i < _transforms.Length; i++)
+			{
+				_transforms[i].localPosition = _initialPositions[i];
+				_transforms[i].localRotation = _initialRotations[i];
+			}
 		}
 	}
 
