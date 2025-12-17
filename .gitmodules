@@ -5,4 +5,4 @@
     update = merge
 [submodule "Packages/de.codesmile.lunyscript"]
 	path = Packages/de.codesmile.lunyscript
-	url = https://github.com/CodeSmile-0000011110110111/LunyScript-Unity
+	url = https://github.com/CodeSmile-0000011110110111/LunyScript-UnityPackage
