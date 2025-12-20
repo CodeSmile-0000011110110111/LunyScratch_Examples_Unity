@@ -11,6 +11,8 @@
   - 'LunyScript/' contains engine-agnostic scripting types, utilizing Luny library
   - 'LunyScript.Unity/' contains Unity-specific bindings for LunyScript
   - analogous Luny.Godot and LunyScript.Godot exist in the Godot addon repository
+- Code restricted to C# 9 for compatibility with Unity 6
+- LunyScriptRunner runs IRunnable instances (sequences, statemachines, behavior trees) which then execute (or query) IBlock instances
 
 ## Implementation Notes
 - for logging, prefer LunyLogger methods (it redirects to engine-native logging, or in absence to Console.WriteLine)
