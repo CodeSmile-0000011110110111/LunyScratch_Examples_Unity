@@ -18,9 +18,12 @@
 - for logging, prefer LunyLogger methods (it redirects to engine-native logging, or in absence to Console.WriteLine)
 
 ## Preferences
-- End all responses with: `#Credits spent in chat: ~$X.XX (+$X.XX), Context: XX% budget` (credits = high estimate, accumulative for entire chat; in brackets: by how much value changed since last prompt)
 - Concise, direct responses
 - Ask if a new preference from prompts should be added to context.md
+- End all responses with: `#Credits spent in chat: ~$X.XX (+$X.XX), Context: XX% budget` (credits = high estimate, accumulative for entire chat; in brackets: by how much value changed since last prompt)
+- **Step-by-Step Mode**: Always operate in a strict planning-first mode.
+- **Explicit Confirmation**: Do not modify any files or start implementation until the user has explicitly confirmed the plan.
+- **No "Running Ahead"**: Wait for confirmation after each major phase (Planning -> Implementation -> Verification).
 
 ## Notes
-- Test scene: in package
+- Test scene: in package, in engine-specific folders
