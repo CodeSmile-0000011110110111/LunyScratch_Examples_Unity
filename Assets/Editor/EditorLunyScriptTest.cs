@@ -1,8 +1,10 @@
+using System;
+
 /// <summary>
 /// Example LunyScript demonstrating the block system and Step 2 debug/profiling features.
 /// This script will automatically bind to any GameObject named "ExampleLunyScript" in the scene.
 /// </summary>
-public sealed class ExampleLunyScript : LunyScript.LunyScript
+public sealed class EditorLunyScriptTest : LunyScript.LunyScript
 {
 	public override void Build()
 	{
@@ -24,7 +26,7 @@ public sealed class ExampleLunyScript : LunyScript.LunyScript
 			Log("Multi-block sequence start"),
 			Do(() =>
 			{
-				var health = Variables.Get<int>("Health");
+				var health = Variables.Get<Int32>("Health");
 				Variables["Health"] = health - 1;
 			}),
 			DebugBreak("sequence breakpoint"),
@@ -35,11 +37,11 @@ public sealed class ExampleLunyScript : LunyScript.LunyScript
 		// In debug builds, Variables.OnVariableChanged events will fire
 		OnUpdate(Do(() =>
 		{
-			var score = GlobalVariables.Get<int>("GameScore");
+			var score = GlobalVariables.Get<Int32>("GameScore");
 			GlobalVariables["GameScore"] = score + 1;
 		}));
 
-		// Note: To enable debug features, build with DEBUG, LUNY_DEBUG, or LUNYSCRIPT_DEBUG defined
+		// Note: To enable debug features, build with DEBUG or LUNYSCRIPT_DEBUG defined
 		// In release builds, all DebugLog() and DebugBreak() calls have zero overhead
 
 		// To enable execution tracing: context.DebugHooks.EnableTracing = true
