@@ -8,7 +8,9 @@ using UnityEngine;
 
 public sealed class ProfilerLabel : MonoBehaviour
 {
-	[SerializeField] [Range(1, 120)] private Int32 m_UpdateIntervalInFrames = 30;
+	[SerializeField] private ProfilerCategory m_ShowCategories = ProfilerCategory.OnStartup | ProfilerCategory.OnFixedStep |
+	                                                             ProfilerCategory.OnUpdate | ProfilerCategory.OnLateUpdate;
+	[SerializeField] [Range(1, 120)] private Int32 m_UpdateIntervalInFrames = 20;
 
 	private TMP_Text m_Text;
 	private IEngineProfiler m_Profiler;
@@ -16,17 +18,18 @@ public sealed class ProfilerLabel : MonoBehaviour
 
 	private void OnValidate()
 	{
-		if (Application.isPlaying)
+		if (Application.isPlaying && m_Profiler != null)
 			StartSnapshotUpdates();
 	}
 
-	private void Start()
+	private void Awake()
 	{
 		m_Text = GetComponent<TMP_Text>();
 		m_Profiler = LunyEngine.Instance.Profiler;
-
-		StartSnapshotUpdates();
 	}
+
+	private void OnEnable() => StartSnapshotUpdates();
+	private void OnDisable() => StopAllCoroutines();
 
 	private void StartSnapshotUpdates()
 	{
@@ -36,8 +39,6 @@ public sealed class ProfilerLabel : MonoBehaviour
 
 	private IEnumerator UpdateProfilerSnapshot()
 	{
-		Debug.LogWarning("Profiler updates running ...");
-
 		var nextIntervalFrame = Time.frameCount + m_UpdateIntervalInFrames;
 		var waitInterval = new WaitUntil(() =>
 		{
@@ -52,10 +53,10 @@ public sealed class ProfilerLabel : MonoBehaviour
 
 		while (true)
 		{
+			UpdateLabel();
+
 			yield return waitInterval;
 			yield return waitForEndOfFrame;
-
-			UpdateLabel();
 		}
 	}
 
@@ -64,8 +65,18 @@ public sealed class ProfilerLabel : MonoBehaviour
 		var snapshot = m_Profiler.TakeSnapshot();
 		m_StringBuilder.AppendLine(snapshot.ToString());
 
-		foreach (var metrics in snapshot.ObserverMetrics)
-			m_StringBuilder.AppendLine($"  {metrics.ObserverName} Ø {metrics.AverageMs:F2} ms ({metrics.MinMs:F3}—{metrics.MaxMs:F3} ms)");
+		foreach (var category in snapshot.CategorizedMetrics)
+		{
+			if ((m_ShowCategories & category.Key) == 0)
+				continue;
+
+			m_StringBuilder.AppendLine($"[{category.Key}]");
+			foreach (var metrics in category.Value)
+			{
+				m_StringBuilder.AppendLine($"    {metrics.ObserverName} Ø {metrics.AverageMs:F2} ms " +
+				                           $"({metrics.MinMs:F2}—{metrics.MaxMs:F2} ms)");
+			}
+		}
 
 		m_Text.text = m_StringBuilder.ToString();
 		m_StringBuilder.Clear();

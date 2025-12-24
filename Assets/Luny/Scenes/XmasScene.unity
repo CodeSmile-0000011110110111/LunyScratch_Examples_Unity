@@ -12859,7 +12859,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade7f1dc79c1a2d4aa423f9dd450094c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: LunyScripts::ProfilerLabel
-  m_UpdateIntervalInFrames: 30
+  m_ShowCategories: 15
+  m_UpdateIntervalInFrames: 10
 --- !u!114 &955585265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12889,8 +12890,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278227455
+  m_fontColor: {r: 1, g: 0.5686275, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -12907,8 +12908,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26
-  m_fontSizeBase: 26
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
