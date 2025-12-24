@@ -1,0 +1,404 @@
+
+    Directory:
+    U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.lunyscript
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        12/23/2025  11:34 PM                Luny
+d-----        12/23/2025   7:18 PM                Luny.Unity
+d-----        12/24/2025   1:41 AM                LunyScript
+d-----        12/23/2025   1:15 PM                LunyScript.Unity
+-a----        12/14/2025   3:01 PM           2413 .gitignore
+-a----        12/17/2025  12:07 PM            432 .gitmodules
+-a----        12/14/2025   3:01 PM           1087 LICENSE
+-a----        12/14/2025   3:07 PM            155 LICENSE.meta
+-a----        12/17/2025  11:37 AM            172 Luny.meta
+-a----        12/17/2025  11:37 AM            172 Luny.Unity.meta
+-a----        12/17/2025  11:37 AM            172 LunyScript.meta
+-a----        12/17/2025  11:37 AM            172 LunyScript.Unity.meta
+-a----        12/14/2025   3:05 PM            774 package.json
+-a----        12/14/2025   3:09 PM            163 package.json.meta
+-a----        12/14/2025   3:01 PM             91 README.md
+-a----        12/14/2025   3:10 PM            158 README.md.meta
+    Directory: U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.
+    lunyscript\Luny
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        12/23/2025   1:40 PM                Attributes
+d-----        12/23/2025   8:32 PM                Core
+d-----        12/23/2025  11:38 PM                Diagnostics
+d-----        12/23/2025   7:54 PM                Exceptions
+d-----        12/23/2025  12:12 PM                Extensions
+d-----        12/23/2025  11:35 PM                Interfaces
+d-----        12/23/2025   8:33 PM                Proxies
+d-----        12/23/2025   9:27 PM                Registries
+d-----        12/23/2025   8:19 PM                Tests
+-a----        12/16/2025   8:09 PM              0 .gdignore
+-a----        12/16/2025   8:09 PM           2413 .gitignore
+-a----        12/23/2025   1:30 PM           1527 AssemblyInfo.cs
+-a----        12/23/2025  12:44 PM             83 AssemblyInfo.cs.meta
+-a----        12/18/2025   6:12 PM            172 Attributes.meta
+-a----        12/19/2025   1:26 PM            172 Core.meta
+-a----        12/20/2025   1:13 PM            172 Diagnostics.meta
+-a----        12/23/2025  12:11 PM             83 Exceptions.meta
+-a----        12/18/2025   6:48 PM             83 Extensions.meta
+-a----        12/19/2025   2:32 PM             83 Interfaces.meta
+-a----        12/16/2025   8:09 PM           1087 LICENSE
+-a----        12/17/2025  11:04 AM            162 LICENSE.meta
+-a----        12/16/2025   8:09 PM            353 Luny.asmdef
+-a----        12/17/2025  11:04 AM            173 Luny.asmdef.meta
+-a----        12/23/2025  11:34 PM           4763 LunyEngine.cs
+-a----        12/18/2025   5:28 PM             59 LunyEngine.cs.meta
+-a----        12/23/2025   9:25 PM            733 LunyEngine.MandatoryServices.
+                                                  cs
+-a----        12/23/2025   7:57 PM             83 LunyEngine.MandatoryServices.
+                                                  cs.meta
+-a----        12/19/2025   1:26 PM            172 Proxies.meta
+-a----        12/16/2025   8:09 PM            103 README.md
+-a----        12/17/2025  11:04 AM            165 README.md.meta
+-a----        12/19/2025   2:30 PM             83 Registries.meta
+-a----        12/18/2025   6:12 PM            172 Tests.meta
+    Directory: U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.
+    lunyscript\Luny\Attributes
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        12/23/2025   1:40 PM            280 LunyTestableAttribute.cs
+-a----        12/18/2025   6:12 PM             59 LunyTestableAttribute.cs.meta
+    Directory: U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.
+    lunyscript\Luny\Core
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        12/23/2025   1:40 PM           1180 ObjectID.cs
+-a----        12/19/2025   1:24 PM             59 ObjectID.cs.meta
+-a----        12/23/2025   8:32 PM           1498 TypeDiscovery.cs
+-a----        12/19/2025   2:24 PM             59 TypeDiscovery.cs.meta
+    Directory: U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.
+    lunyscript\Luny\Diagnostics
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        12/23/2025  11:38 PM           3394 EngineProfiler.cs
+-a----        12/20/2025   1:13 PM             59 EngineProfiler.cs.meta
+-a----        12/20/2025   1:07 PM           1228 LogEntry.cs
+-a----        12/20/2025   1:13 PM             59 LogEntry.cs.meta
+-a----        12/23/2025   8:24 PM           4521 LunyLogger.cs
+-a----        12/17/2025  11:04 AM             59 LunyLogger.cs.meta
+-a----        12/20/2025   1:16 PM            565 ObserverMetrics.cs
+-a----        12/20/2025   1:13 PM             59 ObserverMetrics.cs.meta
+-a----        12/20/2025   1:16 PM            514 ProfilerSnapshot.cs
+-a----        12/20/2025   1:13 PM             59 ProfilerSnapshot.cs.meta
+    Directory: U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.
+    lunyscript\Luny\Exceptions
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        12/23/2025  12:22 PM            367 LunyException.cs
+-a----        12/23/2025  11:57 AM             83 LunyException.cs.meta
+-a----        12/23/2025  12:22 PM            361 LunyLifecycleException.cs
+-a----        12/23/2025  11:57 AM             83 LunyLifecycleException.cs.met
+                                                  a
+-a----        12/23/2025  12:22 PM            365 LunyServiceException.cs
+-a----        12/23/2025  11:57 AM             83 LunyServiceException.cs.meta
+-a----        12/23/2025   7:54 PM           1799 LunyThrow.cs
+-a----        12/17/2025  11:04 AM             59 LunyThrow.cs.meta
+    Directory: U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.
+    lunyscript\Luny\Extensions
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        12/23/2025  12:12 PM            237 SystemTypeExtensions.cs
+-a----        12/18/2025   6:49 PM             83 SystemTypeExtensions.cs.meta
+    Directory: U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.
+    lunyscript\Luny\Interfaces
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        12/23/2025  11:53 PM                Providers
+-a----        12/23/2025   8:16 PM            461 IEngineLifecycleObserver.cs
+-a----        12/18/2025   5:28 PM             59 IEngineLifecycleObserver.cs.m
+                                                  eta
+-a----        12/23/2025  12:23 PM            234 IEngineServiceProvider.cs
+-a----        12/18/2025   5:28 PM             59 IEngineServiceProvider.cs.met
+                                                  a
+-a----        12/23/2025  11:35 PM           1251 ILunyEngine.cs
+-a----        12/18/2025   5:28 PM             59 ILunyEngine.cs.meta
+-a----        12/18/2025   5:28 PM            172 Providers.meta
+    Directory: U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.
+    lunyscript\Luny\Interfaces\Providers
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        12/23/2025   1:43 PM            646 IApplicationServiceProvider.c
+                                                  s
+-a----        12/18/2025   5:28 PM             59 IApplicationServiceProvider.c
+                                                  s.meta
+-a----        12/23/2025   9:25 PM            283 IDebugServiceProvider.cs
+-a----        12/23/2025   7:08 PM             83 IDebugServiceProvider.cs.meta
+-a----        12/23/2025   9:25 PM            328 IEditorServiceProvider.cs
+-a----        12/23/2025   9:25 PM             59 IEditorServiceProvider.cs.met
+                                                  a
+-a----        12/23/2025  11:53 PM            766 ISceneServiceProvider.cs
+-a----        12/18/2025   5:28 PM             59 ISceneServiceProvider.cs.meta
+-a----        12/23/2025   1:43 PM            672 ITimeServiceProvider.cs
+-a----        12/20/2025   1:13 PM             59 ITimeServiceProvider.cs.meta
+    Directory: U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.
+    lunyscript\Luny\Proxies
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        12/23/2025   1:40 PM            957 LunyObject.cs
+-a----        12/19/2025   1:24 PM             59 LunyObject.cs.meta
+    Directory: U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.
+    lunyscript\Luny\Registries
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        12/23/2025   6:51 PM           3167 EngineLifecycleObserverRegist
+                                                  ry.cs
+-a----        12/18/2025   5:28 PM             59 EngineLifecycleObserverRegist
+                                                  ry.cs.meta
+-a----        12/23/2025   9:27 PM           2995 EngineServiceRegistry.cs
+-a----        12/18/2025   5:28 PM             59 EngineServiceRegistry.cs.meta
+    Directory: U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.
+    lunyscript\Luny\Tests
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        12/23/2025   8:19 PM           3983 EngineLifecycleExpectedEventO
+                                                  rderMock.cs
+-a----        12/18/2025   6:12 PM             59 EngineLifecycleExpectedEventO
+                                                  rderMock.cs.meta
+-a----        12/18/2025   8:08 PM           2952 LunyAssert.cs
+-a----        12/18/2025   6:12 PM             59 LunyAssert.cs.meta
+-a----        12/23/2025   1:47 PM            304 LunyTestContractViolationExce
+                                                  ption.cs
+-a----        12/18/2025   6:12 PM             59 LunyTestContractViolationExce
+                                                  ption.cs.meta
+    Directory: U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.
+    lunyscript\Luny.Unity
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        12/23/2025   6:54 PM                Diagnostics
+d-----        12/23/2025  12:56 PM                Editor
+d-----        12/23/2025   9:28 PM                Providers
+d-----        12/23/2025   6:53 PM                Proxies
+d-----        12/23/2025   1:48 PM                Tests
+-a----        12/17/2025  11:18 AM           2413 .gitignore
+-a----        12/23/2025   1:13 PM            105 AssemblyInfo.cs
+-a----        12/22/2025   8:39 PM             83 AssemblyInfo.cs.meta
+-a----        12/23/2025   6:52 PM             83 Diagnostics.meta
+-a----        12/17/2025  12:46 PM             83 Editor.meta
+-a----        12/17/2025  11:18 AM           1087 LICENSE
+-a----        12/17/2025  11:24 AM            155 LICENSE.meta
+-a----        12/17/2025  12:32 PM            406 Luny.Unity.asmdef
+-a----        12/17/2025  12:30 PM            166 Luny.Unity.asmdef.meta
+-a----        12/18/2025   5:28 PM            172 Providers.meta
+-a----        12/19/2025   1:26 PM            172 Proxies.meta
+-a----        12/17/2025  11:18 AM             75 README.md
+-a----        12/17/2025  11:24 AM            158 README.md.meta
+-a----        12/17/2025   5:08 PM            172 Tests.meta
+-a----        12/23/2025   7:18 PM           2776 UnityLifecycleAdapter.cs
+-a----        12/17/2025  12:19 PM             83 UnityLifecycleAdapter.cs.meta
+-a----        12/23/2025   6:52 PM           1265 UnityLifecycleAdapter.Editor.
+                                                  cs
+-a----        12/17/2025   6:38 PM             83 UnityLifecycleAdapter.Editor.
+                                                  cs.meta
+    Directory: U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.
+    lunyscript\Luny.Unity\Diagnostics
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        12/23/2025   6:54 PM            567 UnityLogger.cs
+-a----        12/17/2025   1:08 PM             83 UnityLogger.cs.meta
+    Directory: U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.
+    lunyscript\Luny.Unity\Editor
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        12/23/2025   8:30 PM                Linking
+-a----        12/22/2025   7:20 PM             83 Linking.meta
+-a----        12/23/2025  12:53 PM            490 Luny.UnityEditor.asmdef
+-a----        12/17/2025  12:48 PM            166 Luny.UnityEditor.asmdef.meta
+-a----        12/23/2025  12:56 PM           1165 RefreshAssetsOnEnterPlaymode.
+                                                  cs
+-a----         10/7/2025  10:55 AM             83 RefreshAssetsOnEnterPlaymode.
+                                                  cs.meta
+    Directory: U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.
+    lunyscript\Luny.Unity\Editor\Linking
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        12/23/2025   8:30 PM           2333 LunyLinkerProcessor.cs
+-a----        12/22/2025   7:21 PM             83 LunyLinkerProcessor.cs.meta
+-a----        12/23/2025  12:53 PM            716 PreventCodeStrippingLinkerPro
+                                                  cessor.cs
+-a----        12/22/2025   6:59 PM             83 PreventCodeStrippingLinkerPro
+                                                  cessor.cs.meta
+    Directory: U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.
+    lunyscript\Luny.Unity\Providers
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        12/23/2025   7:05 PM            504 UnityApplicationServiceProvid
+                                                  er.cs
+-a----        12/18/2025   5:28 PM             59 UnityApplicationServiceProvid
+                                                  er.cs.meta
+-a----        12/23/2025  12:57 PM            334 UnityApplicationServiceProvid
+                                                  er.Editor.cs
+-a----        12/23/2025  12:18 PM             83 UnityApplicationServiceProvid
+                                                  er.Editor.cs.meta
+-a----        12/23/2025   9:28 PM            539 UnityDebugServiceProvider.cs
+-a----        12/23/2025   7:07 PM             83 UnityDebugServiceProvider.cs.
+                                                  meta
+-a----        12/23/2025   9:28 PM            292 UnityEditorServiceProvider.cs
+-a----        12/23/2025   9:27 PM             83 UnityEditorServiceProvider.cs
+                                                  .meta
+-a----        12/23/2025   1:43 PM           1779 UnitySceneServiceProvider.cs
+-a----        12/18/2025   5:28 PM             59 UnitySceneServiceProvider.cs.
+                                                  meta
+-a----        12/23/2025   1:43 PM            480 UnityTimeServiceProvider.cs
+-a----        12/20/2025   1:13 PM             59 UnityTimeServiceProvider.cs.m
+                                                  eta
+    Directory: U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.
+    lunyscript\Luny.Unity\Proxies
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        12/23/2025   6:53 PM                Static
+-a----        12/23/2025   6:53 PM             83 Static.meta
+-a----        12/23/2025   1:48 PM            749 UnityObject.cs
+-a----        12/19/2025   1:24 PM             59 UnityObject.cs.meta
+    Directory: U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.
+    lunyscript\Luny.Unity\Tests
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        12/23/2025   1:48 PM            549 EngineLifecycleTests.cs
+-a----        12/17/2025   5:09 PM             59 EngineLifecycleTests.cs.meta
+-a----        12/23/2025  12:57 PM            540 Luny.Unity.Tests.asmdef
+-a----        12/17/2025   5:08 PM            166 Luny.Unity.Tests.asmdef.meta
+-a----        12/18/2025   8:03 PM          14840 LunyLifecycleSmokeTest.unity
+-a----        12/17/2025  12:30 PM            155 LunyLifecycleSmokeTest.unity.
+                                                  meta
+    Directory: U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.
+    lunyscript\LunyScript
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        12/23/2025   9:25 PM                Blocks
+d-----        12/24/2025   1:34 AM                Core
+d-----        12/23/2025   1:59 PM                Diagnostics
+d-----        12/24/2025   1:37 AM                Execution
+d-----        12/23/2025   2:00 PM                Interfaces
+d-----        12/24/2025   1:29 AM                Registries
+-a----        12/16/2025   8:09 PM              0 .gdignore
+-a----        12/16/2025   8:09 PM           2425 .gitignore
+-a----        12/16/2025   9:06 PM              0 .gitmodules
+-a----        12/23/2025   2:04 PM           1659 AssemblyInfo.cs
+-a----        12/23/2025  12:44 PM             83 AssemblyInfo.cs.meta
+-a----        12/20/2025   1:48 PM            172 Blocks.meta
+-a----        12/19/2025   1:51 PM             83 Core.meta
+-a----        12/20/2025   1:34 PM            172 Diagnostics.meta
+-a----        12/19/2025   7:24 PM            172 Execution.meta
+-a----        12/23/2025  12:59 PM             83 Interfaces.meta
+-a----        12/16/2025   8:09 PM           1087 LICENSE
+-a----        12/16/2025   8:09 PM            162 LICENSE.meta
+-a----        12/22/2025   7:58 PM            405 LunyScript.asmdef
+-a----        12/16/2025   8:09 PM            173 LunyScript.asmdef.meta
+-a----        12/24/2025   1:41 AM           1573 LunyScript.cs
+-a----        12/19/2025   1:24 PM             59 LunyScript.cs.meta
+-a----        12/23/2025   9:25 PM            953 LunyScript.Diagnostics.cs
+-a----        12/20/2025   1:47 PM             59 LunyScript.Diagnostics.cs.met
+                                                  a
+-a----        12/23/2025   9:25 PM            295 LunyScript.Editor.cs
+-a----        12/23/2025   9:25 PM             59 LunyScript.Editor.cs.meta
+-a----        12/23/2025   1:34 PM            300 LunyScript.Lambda.cs
+-a----        12/23/2025   1:33 PM             83 LunyScript.Lambda.cs.meta
+-a----        12/23/2025   2:05 PM            674 LunyScript.Lifecycle.cs
+-a----        12/19/2025   7:55 PM             83 LunyScript.Lifecycle.cs.meta
+-a----        12/24/2025   1:08 AM            315 LunyScript.Variables.cs
+-a----        12/23/2025   1:32 PM             83 LunyScript.Variables.cs.meta
+-a----        12/22/2025   4:35 PM          28009 NEXT-STEPS.md
+-a----        12/19/2025   7:48 PM            158 NEXT-STEPS.md.meta
+-a----        12/16/2025   8:09 PM            129 README.md
+-a----        12/16/2025   8:09 PM            165 README.md.meta
+-a----        12/19/2025   1:52 PM             83 Registries.meta
+    Directory: U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.
+    lunyscript\LunyScript\Blocks
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        12/23/2025   9:25 PM            499 ActionBlock.cs
+-a----        12/19/2025   7:24 PM             59 ActionBlock.cs.meta
+-a----        12/23/2025   9:25 PM            945 DebugBreakBlock.cs
+-a----        12/20/2025   1:47 PM             59 DebugBreakBlock.cs.meta
+-a----        12/23/2025   9:25 PM            867 DebugLogBlock.cs
+-a----        12/20/2025   1:47 PM             59 DebugLogBlock.cs.meta
+-a----        12/23/2025   9:25 PM           1008 EditorPausePlayerBlock.cs
+-a----        12/23/2025   9:25 PM             59 EditorPausePlayerBlock.cs.met
+                                                  a
+-a----        12/23/2025   9:25 PM            491 LogMessageBlock.cs
+-a----        12/19/2025   7:24 PM             59 LogMessageBlock.cs.meta
+    Directory: U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.
+    lunyscript\LunyScript\Core
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        12/23/2025   1:02 PM           1122 RunnableID.cs
+-a----        12/19/2025   1:24 PM             59 RunnableID.cs.meta
+-a----        12/24/2025   1:34 AM           3529 ScriptContext.cs
+-a----        12/19/2025   7:24 PM             59 ScriptContext.cs.meta
+-a----        12/24/2025   1:29 AM           1101 ScriptDefinition.cs
+-a----        12/19/2025   1:24 PM             59 ScriptDefinition.cs.meta
+-a----        12/23/2025   1:02 PM           1087 ScriptID.cs
+-a----        12/19/2025   1:24 PM             59 ScriptID.cs.meta
+-a----        12/23/2025   1:57 PM           2606 Variables.cs
+-a----        12/19/2025   1:24 PM             59 Variables.cs.meta
+    Directory: U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.
+    lunyscript\LunyScript\Diagnostics
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        12/23/2025   1:59 PM            634 BlockMetrics.cs
+-a----        12/20/2025   1:34 PM             59 BlockMetrics.cs.meta
+-a----        12/23/2025   1:59 PM           3141 BlockProfiler.cs
+-a----        12/20/2025   1:34 PM             59 BlockProfiler.cs.meta
+-a----        12/23/2025   1:59 PM            521 BlockProfilerSnapshot.cs
+-a----        12/20/2025   1:34 PM             59 BlockProfilerSnapshot.cs.meta
+-a----        12/23/2025   1:59 PM           2156 DebugHooks.cs
+-a----        12/19/2025   7:24 PM             59 DebugHooks.cs.meta
+-a----        12/23/2025   1:05 PM            666 ExecutionTrace.cs
+-a----        12/20/2025   1:34 PM             59 ExecutionTrace.cs.meta
+    Directory: U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.
+    lunyscript\LunyScript\Execution
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        12/24/2025   1:37 AM           4574 LunyScriptRunner.cs
+-a----        12/17/2025  11:04 AM             59 LunyScriptRunner.cs.meta
+-a----        12/23/2025   2:05 PM            707 RunnableSequence.cs
+-a----        12/19/2025   7:24 PM             59 RunnableSequence.cs.meta
+    Directory: U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.
+    lunyscript\LunyScript\Interfaces
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        12/23/2025   2:00 PM            257 IBlock.cs
+-a----        12/19/2025   7:24 PM             59 IBlock.cs.meta
+-a----        12/23/2025   1:05 PM            407 IRunnable.cs
+-a----        12/19/2025   7:24 PM             59 IRunnable.cs.meta
+    Directory: U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.
+    lunyscript\LunyScript\Registries
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        12/24/2025   1:29 AM           2373 ScenePreprocessor.cs
+-a----        12/19/2025   1:24 PM             59 ScenePreprocessor.cs.meta
+-a----        12/24/2025   1:13 AM           3260 ScriptContextRegistry.cs
+-a----        12/19/2025   7:24 PM             59 ScriptContextRegistry.cs.meta
+-a----        12/24/2025   1:20 AM           2724 ScriptRegistry.cs
+-a----        12/19/2025   1:24 PM             59 ScriptRegistry.cs.meta
+    Directory: U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.
+    lunyscript\LunyScript.Unity
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        12/23/2025   2:05 PM                Editor
+-a----        12/17/2025  11:19 AM           2413 .gitignore
+-a----        12/23/2025   1:14 PM            111 AssemblyInfo.cs
+-a----        12/23/2025  12:44 PM             83 AssemblyInfo.cs.meta
+-a----        12/17/2025  12:46 PM             83 Editor.meta
+-a----        12/17/2025  11:19 AM           1087 LICENSE
+-a----        12/17/2025  11:24 AM            155 LICENSE.meta
+-a----        12/17/2025  12:32 PM            418 LunyScript.Unity.asmdef
+-a----        12/17/2025  12:31 PM            166 LunyScript.Unity.asmdef.meta
+-a----        12/17/2025  11:19 AM            101 README.md
+-a----        12/17/2025  11:24 AM            158 README.md.meta
+    Directory: U:\LunyScratch\LunyScratch_Examples_Unity\Packages\de.codesmile.
+    lunyscript\LunyScript.Unity\Editor
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        12/23/2025   1:09 PM            519 LunyScript.UnityEditor.asmdef
+-a----        12/22/2025   7:12 PM            166 LunyScript.UnityEditor.asmdef
+                                                  .meta
+-a----        12/23/2025   2:05 PM            748 PreventCodeStrippingLinkerPro
+                                                  cessor.cs
+-a----        12/22/2025   7:07 PM             83 PreventCodeStrippingLinkerPro
+                                                  cessor.cs.meta
