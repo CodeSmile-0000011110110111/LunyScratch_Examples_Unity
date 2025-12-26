@@ -10,6 +10,6 @@ public sealed class PresentDeliveryProcessor : LunyScript.LunyScript
 		GlobalVariables["PresentsPerSecond"] = new Number(12427);
 
 		var pps = (Int32)GlobalVariables.Get<Number>("PresentsPerSecond");
-		OnUpdate(Log($"Delivered {pps/60} presents"));
+		//OnUpdate(Log($"Delivered {pps/60} presents"));
 	}
 }

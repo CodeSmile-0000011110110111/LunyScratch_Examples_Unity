@@ -18,6 +18,7 @@ MonoBehaviour:
   m_RendererData: {fileID: 0}
   m_RendererDataList:
   - {fileID: 11400000, guid: f288ae1f4751b564a96ac7587541f7a2, type: 2}
+  - {fileID: 11400000, guid: 701a960aa8a00ca4f9c83e6aaa0a09ea, type: 2}
   m_DefaultRendererIndex: 0
   m_RequireDepthTexture: 1
   m_RequireOpaqueTexture: 1
@@ -26,7 +27,7 @@ MonoBehaviour:
   m_SupportsHDR: 1
   m_HDRColorBufferPrecision: 0
   m_MSAA: 2
-  m_RenderScale: 0.3
+  m_RenderScale: 0.29
   m_UpscalingFilter: 2
   m_FsrOverrideSharpness: 0
   m_FsrSharpness: 0.92

@@ -38,10 +38,13 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - LunyScript-WorldSpaceDebugUI
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: LunyScript-WorldSpaceUI
+    uniqueID: 3421276447
     locked: 0
   m_RenderingLayers:
   - Default
