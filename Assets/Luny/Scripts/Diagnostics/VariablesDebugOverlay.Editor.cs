@@ -32,7 +32,7 @@ public sealed partial class VariablesDebugOverlay
 	private void OnEditorSelectionChanged()
 	{
 		UnregisterScriptContextVariableChangedEvents();
-		m_ScriptContext = null;
+		m_SelectedScriptContext = null;
 
 		var selectedGameObject = Selection.activeGameObject;
 		if (selectedGameObject != null)
@@ -41,7 +41,7 @@ public sealed partial class VariablesDebugOverlay
 			var context = LunyScriptEngine.Instance.GetScriptContext(nativeID);
 			if (context != null)
 			{
-				m_ScriptContext = context;
+				m_SelectedScriptContext = context;
 				RegisterScriptContextVariableChangeEvents();
 			}
 		}
@@ -52,19 +52,19 @@ public sealed partial class VariablesDebugOverlay
 
 	private void RegisterScriptContextVariableChangeEvents()
 	{
-		if (m_ScriptContext != null)
+		if (m_SelectedScriptContext != null)
 		{
-			m_ScriptContext.LocalVariables.OnVariableChanged += OnLocalVariableChanged;
-			m_ScriptContext.InspectorVariables.OnVariableChanged += OnInspectorVariableChanged;
+			m_SelectedScriptContext.LocalVariables.OnVariableChanged += OnLocalVariableChanged;
+			m_SelectedScriptContext.InspectorVariables.OnVariableChanged += OnInspectorVariableChanged;
 		}
 	}
 
 	private void UnregisterScriptContextVariableChangedEvents()
 	{
-		if (m_ScriptContext != null)
+		if (m_SelectedScriptContext != null)
 		{
-			m_ScriptContext.LocalVariables.OnVariableChanged -= OnLocalVariableChanged;
-			m_ScriptContext.InspectorVariables.OnVariableChanged -= OnInspectorVariableChanged;
+			m_SelectedScriptContext.LocalVariables.OnVariableChanged -= OnLocalVariableChanged;
+			m_SelectedScriptContext.InspectorVariables.OnVariableChanged -= OnInspectorVariableChanged;
 		}
 	}
 

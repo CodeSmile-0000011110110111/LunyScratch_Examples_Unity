@@ -3,7 +3,6 @@ using System;
 using System.Text;
 using TMPro;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using Object = System.Object;
 
 public sealed partial class VariablesDebugOverlay : MonoBehaviour
@@ -12,8 +11,9 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 	[SerializeField] private TMP_Text m_LocalVarsText;
 	[SerializeField] private TMP_Text m_InspectorVarsText;
 
+	private WorldSpaceDebugAnchor m_WorldSpaceAnchor;
 	private StringBuilder m_StringBuilder = new();
-	private ScriptContext m_ScriptContext;
+	private ScriptContext m_SelectedScriptContext;
 
 	private void Awake()
 	{
@@ -23,6 +23,10 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 			throw new ArgumentNullException(nameof(m_LocalVarsText));
 		if (m_InspectorVarsText == null)
 			throw new ArgumentNullException(nameof(m_InspectorVarsText));
+
+		m_WorldSpaceAnchor = FindFirstObjectByType<WorldSpaceDebugAnchor>();
+		if (m_WorldSpaceAnchor == null)
+			throw new NullReferenceException("WorldSpaceDebugAnchor not found");
 	}
 
 	private void OnEnable()
@@ -53,39 +57,58 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 	private void UpdateGlobalVariables(String variableName = null)
 	{
 		var globalVariables = ScriptContext.GlobalVariables;
-		UpdateLabel(nameof(ScriptContext.GlobalVariables), globalVariables, variableName, m_GlobalVarsText);
+		var text = UpdateLabel(nameof(ScriptContext.GlobalVariables), globalVariables, variableName);
+		m_GlobalVarsText.text = text;
 	}
 
 	private void UpdateLocalVariables(String variableName = null)
 	{
-		if (m_ScriptContext != null)
+		var text = "";
+		if (m_SelectedScriptContext != null)
 		{
-			var name = m_ScriptContext.EngineObject.Name;
-			var localVariables = m_ScriptContext.LocalVariables;
+			var name = m_SelectedScriptContext.EngineObject.Name;
+			var localVariables = m_SelectedScriptContext.LocalVariables;
 			var title = $"{nameof(ScriptContext.LocalVariables)} ({name})";
-			UpdateLabel(title, localVariables, variableName, m_LocalVarsText);
+			text = UpdateLabel(title, localVariables, variableName);
+
+			if (m_WorldSpaceAnchor != null)
+			{
+				var go = m_SelectedScriptContext.EngineObject.GetNativeObject() as GameObject;
+				if (go != null)
+				{
+					m_WorldSpaceAnchor.Target = go.transform;
+					m_WorldSpaceAnchor.Label.text = text;
+				}
+			}
 		}
 		else
-			UpdateLabel(nameof(ScriptContext.LocalVariables), null, null, m_LocalVarsText);
+			text = UpdateLabel(nameof(ScriptContext.LocalVariables), null, null);
+
+		m_LocalVarsText.text = text;
 	}
 
 	private void UpdateInspectorVariables(String variableName = null)
 	{
-		if (m_ScriptContext != null)
+		if (m_SelectedScriptContext != null)
 		{
-			var name = m_ScriptContext.EngineObject.Name;
-			var inspectorVariables = m_ScriptContext.InspectorVariables;
+			var name = m_SelectedScriptContext.EngineObject.Name;
+			var inspectorVariables = m_SelectedScriptContext.InspectorVariables;
 			var title = $"{nameof(ScriptContext.InspectorVariables)} ({name})";
-			UpdateLabel(title, inspectorVariables, variableName, m_InspectorVarsText);
+			var text = UpdateLabel(title, inspectorVariables, variableName);
+			m_InspectorVarsText.text = text;
 		}
 		else
-			UpdateLabel(nameof(ScriptContext.InspectorVariables), null, null, m_InspectorVarsText);
+		{
+			var text = UpdateLabel(nameof(ScriptContext.InspectorVariables), null, null);
+			m_InspectorVarsText.text = text;
+		}
 	}
 
-	private void UpdateLabel(String title, Variables variables, String variableName, TMP_Text label)
+	private String UpdateLabel(String title, Variables variables, String variableName)
 	{
-		var currentFrame = Time.frameCount;
+		m_StringBuilder.Clear();
 		m_StringBuilder.AppendLine(title);
+
 		if (variables != null)
 		{
 			foreach (var kvp in variables)
@@ -93,7 +116,7 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 				if (kvp.Key == variableName)
 				{
 					m_StringBuilder.Append("<color=\"green\">");
-					m_StringBuilder.AppendLine($"  {kvp.Key} = {kvp.Value} [{currentFrame}]");
+					m_StringBuilder.AppendLine($"  {kvp.Key} = {kvp.Value} [{Time.frameCount}]");
 					m_StringBuilder.Append("</color>");
 				}
 				else
@@ -101,7 +124,6 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 			}
 		}
 
-		label.text = m_StringBuilder.ToString();
-		m_StringBuilder.Clear();
+		return m_StringBuilder.ToString();
 	}
 }

@@ -38,11 +38,12 @@ public class RuntimeFlyCamera : MonoBehaviour
 	private void HandleRotation()
 	{
 		// Right Click = Rotate
-		if (Mouse.current.rightButton.isPressed)
+		var mouse = Mouse.current;
+		if (mouse != null && mouse.rightButton.isPressed)
 		{
 			Cursor.lockState = CursorLockMode.Locked;
-			var mouseDelta = Mouse.current.delta.ReadValue() * lookSensitivity;
 
+			var mouseDelta = mouse.delta.ReadValue() * lookSensitivity;
 			targetRotation.y += mouseDelta.x;
 			targetRotation.x -= mouseDelta.y;
 			targetRotation.x = Mathf.Clamp(targetRotation.x, -maxLookAngle, maxLookAngle);
@@ -52,20 +53,16 @@ public class RuntimeFlyCamera : MonoBehaviour
 
 		currentRotation.x = Mathf.SmoothDampAngle(currentRotation.x, targetRotation.x, ref rotationVelocity.x, rotationSmoothing);
 		currentRotation.y = Mathf.SmoothDampAngle(currentRotation.y, targetRotation.y, ref rotationVelocity.y, rotationSmoothing);
-
 		transform.localRotation = Quaternion.Euler(currentRotation.x, currentRotation.y, 0f);
 	}
 
 	private void HandleActionInput()
 	{
 		var targetMoveDir = Vector3.zero;
-		var kb = Keyboard.current;
-		var mouse = Mouse.current;
-		if (kb == null || mouse == null)
-			return;
 
 		// --- 1. Panning (Middle Mouse) ---
-		if (mouse.middleButton.isPressed)
+		var mouse = Mouse.current;
+		if (mouse != null && mouse.middleButton.isPressed)
 		{
 			var mouseDelta = mouse.delta.ReadValue();
 			// Panning moves the camera opposite to mouse direction
@@ -74,25 +71,29 @@ public class RuntimeFlyCamera : MonoBehaviour
 		}
 
 		// --- 2. Keyboard Movement (WASDQE) ---
-		if (kb.wKey.isPressed)
-			targetMoveDir += transform.forward;
-		if (kb.sKey.isPressed)
-			targetMoveDir -= transform.forward;
-		if (kb.aKey.isPressed)
-			targetMoveDir -= transform.right;
-		if (kb.dKey.isPressed)
-			targetMoveDir += transform.right;
-		if (kb.qKey.isPressed)
-			targetMoveDir -= transform.up;
-		if (kb.eKey.isPressed)
-			targetMoveDir += transform.up;
+		var kb = Keyboard.current;
+		if (kb != null)
+		{
+			if (kb.wKey.isPressed)
+				targetMoveDir += transform.forward;
+			if (kb.sKey.isPressed)
+				targetMoveDir -= transform.forward;
+			if (kb.aKey.isPressed)
+				targetMoveDir -= transform.right;
+			if (kb.dKey.isPressed)
+				targetMoveDir += transform.right;
+			if (kb.qKey.isPressed)
+				targetMoveDir -= transform.up;
+			if (kb.eKey.isPressed)
+				targetMoveDir += transform.up;
 
-		// Apply Speed and Sprint
-		var speed = kb.leftShiftKey.isPressed ? moveSpeed * fastMoveFactor : moveSpeed;
+			// Apply Speed and Sprint
+			var speed = kb.leftShiftKey.isPressed ? moveSpeed * fastMoveFactor : moveSpeed;
 
-		// --- 3. Apply Smoothing ---
-		// We use SmoothDamp on the position itself toward the desired offset
-		var targetPos = transform.position + targetMoveDir * speed;
-		transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref currentVelocity, movementSmoothing);
+			// --- 3. Apply Smoothing ---
+			// We use SmoothDamp on the position itself toward the desired offset
+			var targetPos = transform.position + targetMoveDir * speed;
+			transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref currentVelocity, movementSmoothing);
+		}
 	}
 }
