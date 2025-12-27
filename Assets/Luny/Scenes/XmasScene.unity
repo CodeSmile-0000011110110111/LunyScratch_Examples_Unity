@@ -4697,13 +4697,14 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
+  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: CameraScene1
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &330585544
 AudioListener:
   m_ObjectHideFlags: 0
@@ -4822,6 +4823,25 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &330585548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f2a60a39ce44c3ebe64a75bd8891c71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LunyScripts::RuntimeFlyCamera
+  moveSpeed: 1
+  fastMoveFactor: 6
+  panSensitivity: 0.05
+  movementSmoothing: 0.25
+  lookSensitivity: 0.1
+  rotationSmoothing: 0.05
+  maxLookAngle: 89
 --- !u!4 &332871951 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1256581459607513518, guid: 43800d5fe7a03c94fbe32fda93baaabb, type: 3}
@@ -13761,7 +13781,6 @@ GameObject:
   m_Component:
   - component: {fileID: 990788133}
   - component: {fileID: 990788136}
-  - component: {fileID: 990788135}
   - component: {fileID: 990788134}
   - component: {fileID: 990788137}
   m_Layer: 0
@@ -13830,14 +13849,6 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!81 &990788135
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 990788132}
-  m_Enabled: 0
 --- !u!20 &990788136
 Camera:
   m_ObjectHideFlags: 0

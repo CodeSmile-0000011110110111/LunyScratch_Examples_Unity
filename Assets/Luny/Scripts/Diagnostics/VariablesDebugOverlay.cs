@@ -9,7 +9,7 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 {
 	[SerializeField] private TMP_Text m_GlobalVarsText;
 	[SerializeField] private TMP_Text m_LocalVarsText;
-	[SerializeField] private TMP_Text m_InspectorVarsText;
+	//[SerializeField] private TMP_Text m_InspectorVarsText;
 
 	private WorldSpaceDebugAnchor m_WorldSpaceAnchor;
 	private StringBuilder m_StringBuilder = new();
@@ -21,9 +21,10 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 			throw new ArgumentNullException(nameof(m_GlobalVarsText));
 		if (m_LocalVarsText == null)
 			throw new ArgumentNullException(nameof(m_LocalVarsText));
-		if (m_InspectorVarsText == null)
-			throw new ArgumentNullException(nameof(m_InspectorVarsText));
+		// if (m_InspectorVarsText == null)
+		// 	throw new ArgumentNullException(nameof(m_InspectorVarsText));
 
+		// FIXME: don't rely on "Find", use events
 		m_WorldSpaceAnchor = FindFirstObjectByType<WorldSpaceDebugAnchor>();
 		if (m_WorldSpaceAnchor == null)
 			throw new NullReferenceException("WorldSpaceDebugAnchor not found");
@@ -89,6 +90,7 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 
 	private void UpdateInspectorVariables(String variableName = null)
 	{
+		/*
 		if (m_SelectedScriptContext != null)
 		{
 			var name = m_SelectedScriptContext.EngineObject.Name;
@@ -102,6 +104,7 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 			var text = UpdateLabel(nameof(ScriptContext.InspectorVariables), null, null);
 			m_InspectorVarsText.text = text;
 		}
+	*/
 	}
 
 	private String UpdateLabel(String title, Variables variables, String variableName)

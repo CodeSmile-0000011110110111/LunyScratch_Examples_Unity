@@ -55,7 +55,7 @@ public sealed partial class VariablesDebugOverlay
 		if (m_SelectedScriptContext != null)
 		{
 			m_SelectedScriptContext.LocalVariables.OnVariableChanged += OnLocalVariableChanged;
-			m_SelectedScriptContext.InspectorVariables.OnVariableChanged += OnInspectorVariableChanged;
+			//m_SelectedScriptContext.InspectorVariables.OnVariableChanged += OnInspectorVariableChanged;
 		}
 	}
 
@@ -64,11 +64,11 @@ public sealed partial class VariablesDebugOverlay
 		if (m_SelectedScriptContext != null)
 		{
 			m_SelectedScriptContext.LocalVariables.OnVariableChanged -= OnLocalVariableChanged;
-			m_SelectedScriptContext.InspectorVariables.OnVariableChanged -= OnInspectorVariableChanged;
+			//m_SelectedScriptContext.InspectorVariables.OnVariableChanged -= OnInspectorVariableChanged;
 		}
 	}
 
 	private void OnLocalVariableChanged(Object sender, VariableChangedEventArgs e) => UpdateLocalVariables(e.Name);
-	private void OnInspectorVariableChanged(Object sender, VariableChangedEventArgs e) => UpdateInspectorVariables(e.Name);
+	//private void OnInspectorVariableChanged(Object sender, VariableChangedEventArgs e) => UpdateInspectorVariables(e.Name);
 #endif
 }
