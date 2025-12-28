@@ -15,7 +15,7 @@ public sealed class EditorLunyScriptTest : LunyScript.LunyScript
 
 		// Demonstrate Log vs DebugLog
 		// DebugLog() is completely stripped in release builds
-		OnUpdate(DebugLog("Debug-only log - stripped in release"));
+		OnUpdate(Debug.Log("Debug-only log - stripped in release"));
 		// Log() appears in both debug and release builds
 		OnUpdate(Log("ExampleLunyScript Update tick - always logs"));
 		OnFixedStep(Log("ExampleLunyScript FixedStep tick"));
@@ -24,18 +24,18 @@ public sealed class EditorLunyScriptTest : LunyScript.LunyScript
 		// Multi-block sequence demonstrating debug breakpoint
 		OnUpdate(
 			Log("Multi-block sequence start"),
-			Do(() =>
+			Run(() =>
 			{
 				var health = LocalVariables.Get<Int32>("Health");
 				LocalVariables["Health"] = health - 1;
 			}),
-			DebugBreak("sequence breakpoint"),
+			Debug.Break("sequence breakpoint"),
 			Log("Multi-block sequence end")
 		);
 
 		// Demonstrate global variables with variable change tracking
 		// In debug builds, Variables.OnVariableChanged events will fire
-		OnUpdate(Do(() =>
+		OnUpdate(Run(() =>
 		{
 			var score = GlobalVariables.Get<Int32>("GameScore");
 			GlobalVariables["GameScore"] = score + 1;

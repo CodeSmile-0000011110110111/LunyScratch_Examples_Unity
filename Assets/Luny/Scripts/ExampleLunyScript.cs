@@ -28,7 +28,7 @@ public sealed class ExampleLunyScript : LunyScript.LunyScript
 		// Multi-block sequence demonstrating debug breakpoint
 		OnUpdate(
 			//Log("Multi-block sequence start"),
-			Do(() =>
+			Run(() =>
 			{
 				var health = LocalVariables.Get<int>("Health");
 				LocalVariables["Health"] = health - 1;
@@ -43,7 +43,7 @@ public sealed class ExampleLunyScript : LunyScript.LunyScript
 
 		// Demonstrate global variables with variable change tracking
 		// In debug builds, Variables.OnVariableChanged events will fire
-		OnFixedStep(Do(() =>
+		OnFixedStep(Run(() =>
 		{
 			var score = GlobalVariables.Get<int>("GameScore");
 			GlobalVariables["GameScore"] = score + 1;

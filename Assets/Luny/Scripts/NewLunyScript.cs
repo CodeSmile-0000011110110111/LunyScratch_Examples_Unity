@@ -1,4 +1,5 @@
 using Luny;
+using Luny.Diagnostics;
 using System;
 
 public sealed class PresentDeliveryProcessor : LunyScript.LunyScript
@@ -11,21 +12,26 @@ public sealed class PresentDeliveryProcessor : LunyScript.LunyScript
 		GlobalVariables["PresentsPerSecond"] = new Number(12427);
 
 		var pps = (Int32)GlobalVariables.Get<Number>("PresentsPerSecond");
-		//OnUpdate(Log($"Delivered {pps/60} presents"));
+		//OnUpdate(Debug.Log($"Delivered {pps / 60} presents"));
 
 		OnUpdate(
-			Do(() =>
+			Run(() =>
 			{
-				var delivered = LocalVariables.Get<int>("PresentsDelivered");
+				var delivered = LocalVariables.Get<Int32>("PresentsDelivered");
 				LocalVariables["PresentsDelivered"] = ++delivered;
 			})
 		);
 		OnFixedStep(
-			Do(() =>
+			Run(() =>
 			{
-				var wrapped = LocalVariables.Get<int>("PresentsWrapped");
+				var wrapped = LocalVariables.Get<Int32>("PresentsWrapped");
 				LocalVariables["PresentsWrapped"] = ++wrapped;
 			})
 		);
+
+		// OnUpdate(Run(() => LunyLogger.LogInfo("custom lambda runs")));
+		// OnUpdate(Run(MyCustomCode));
 	}
+
+	private void MyCustomCode() => LunyLogger.LogInfo("custom method runs");
 }
