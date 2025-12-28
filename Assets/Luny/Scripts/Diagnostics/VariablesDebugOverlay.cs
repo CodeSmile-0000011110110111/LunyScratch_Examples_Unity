@@ -32,7 +32,7 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 
 	private void OnEnable()
 	{
-		var globalVariables = LunyScript.LunyScript.GlobalVariables;
+		var globalVariables = LunyScriptEngine.Instance.GlobalVariables;
 		globalVariables.OnVariableChanged += OnGlobalVariableChanged;
 		Editor_RegisterSelectionChangedEvent();
 
@@ -41,9 +41,14 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 
 	private void OnDisable()
 	{
-		var globalVariables = LunyScript.LunyScript.GlobalVariables;
-		globalVariables.OnVariableChanged -= OnGlobalVariableChanged;
 		Editor_UnregisterSelectionChangedEvent();
+
+		var scriptEngine = LunyScriptEngine.Instance;
+		if (scriptEngine != null)
+		{
+			var globalVariables = LunyScriptEngine.Instance.GlobalVariables;
+			globalVariables.OnVariableChanged -= OnGlobalVariableChanged;
+		}
 	}
 
 	private void OnGlobalVariableChanged(Object sender, VariableChangedEventArgs e) => UpdateGlobalVariables(e.Name);
@@ -57,7 +62,7 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 
 	private void UpdateGlobalVariables(String variableName = null)
 	{
-		var globalVariables = ScriptContext.GlobalVariables;
+		var globalVariables = LunyScriptEngine.Instance.GlobalVariables;
 		var text = UpdateLabel(nameof(ScriptContext.GlobalVariables), globalVariables, variableName);
 		m_GlobalVarsText.text = text;
 	}
@@ -107,7 +112,7 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 	*/
 	}
 
-	private String UpdateLabel(String title, Variables variables, String variableName)
+	private String UpdateLabel(String title, IVariables variables, String variableName)
 	{
 		m_StringBuilder.Clear();
 		m_StringBuilder.AppendLine(title);

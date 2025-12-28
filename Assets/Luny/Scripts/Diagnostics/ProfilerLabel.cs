@@ -8,8 +8,8 @@ using UnityEngine;
 
 public sealed class ProfilerLabel : MonoBehaviour
 {
-	[SerializeField] private ProfilerCategory m_ShowCategories = ProfilerCategory.OnStartup | ProfilerCategory.OnFixedStep |
-	                                                             ProfilerCategory.OnUpdate | ProfilerCategory.OnLateUpdate;
+	[SerializeField] private EngineLifecycleEvents m_ShowCategories = EngineLifecycleEvents.OnStartup | EngineLifecycleEvents.OnFixedStep |
+	                                                             EngineLifecycleEvents.OnUpdate | EngineLifecycleEvents.OnLateUpdate;
 	[SerializeField] [Range(1, 120)] private Int32 m_UpdateIntervalInFrames = 20;
 
 	private TMP_Text m_Text;
