@@ -72,14 +72,14 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 		var text = "";
 		if (m_SelectedScriptContext != null)
 		{
-			var name = m_SelectedScriptContext.EngineObject.Name;
+			var name = m_SelectedScriptContext.LunyObject.Name;
 			var localVariables = m_SelectedScriptContext.LocalVariables;
 			var title = $"{nameof(IScriptContext.LocalVariables)} ({name})";
 			text = UpdateLabel(title, localVariables, variableName);
 
 			if (m_WorldSpaceAnchor != null)
 			{
-				var go = m_SelectedScriptContext.EngineObject.As<GameObject>();
+				var go = m_SelectedScriptContext.LunyObject.As<GameObject>();
 				if (go != null)
 				{
 					m_WorldSpaceAnchor.Target = go.transform;

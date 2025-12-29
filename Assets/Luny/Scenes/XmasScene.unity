@@ -9700,7 +9700,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &671550067
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13419,7 +13419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade7f1dc79c1a2d4aa423f9dd450094c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: LunyScripts::ProfilerLabel
-  m_ShowCategories: 15
+  m_ShowCategories: 112
   m_UpdateIntervalInFrames: 10
 --- !u!114 &955585265
 MonoBehaviour:
@@ -26803,7 +26803,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: LunyScripts::VariablesDebugOverlay
   m_GlobalVarsText: {fileID: 1490767279}
   m_LocalVarsText: {fileID: 110161697}
-  m_InspectorVarsText: {fileID: 1233280303}
 --- !u!114 &2086867136
 MonoBehaviour:
   m_ObjectHideFlags: 0

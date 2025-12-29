@@ -19,7 +19,7 @@ public sealed class EditorLunyScriptTest : LunyScript.LunyScript
 		// Log() appears in both debug and release builds
 		Every.Frame(Log("ExampleLunyScript Update tick - always logs"));
 		Every.FixedStep(Log("ExampleLunyScript FixedStep tick"));
-		Every.FrameEnd(Log("ExampleLunyScript LateUpdate tick"));
+		Every.FrameEnds(Log("ExampleLunyScript LateUpdate tick"));
 
 		// Multi-block sequence demonstrating debug breakpoint
 		Every.Frame(
