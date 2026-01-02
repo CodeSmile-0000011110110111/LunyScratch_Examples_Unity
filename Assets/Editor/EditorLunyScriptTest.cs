@@ -15,14 +15,14 @@ public sealed class EditorLunyScriptTest : LunyScript.LunyScript
 
 		// Demonstrate Log vs DebugLog
 		// DebugLog() is completely stripped in release builds
-		Every.Frame(Debug.Log("Debug-only log - stripped in release"));
+		When.EveryFrame(Debug.LogInfo("Debug-only log - stripped in release"));
 		// Log() appears in both debug and release builds
-		Every.Frame(Log("ExampleLunyScript Update tick - always logs"));
-		Every.FixedStep(Log("ExampleLunyScript FixedStep tick"));
-		Every.FrameEnds(Log("ExampleLunyScript LateUpdate tick"));
+		When.EveryFrame(Log("ExampleLunyScript Update tick - always logs"));
+		When.EveryFixedStep(Log("ExampleLunyScript FixedStep tick"));
+		When.EveryFrameEnds(Log("ExampleLunyScript LateUpdate tick"));
 
 		// Multi-block sequence demonstrating debug breakpoint
-		Every.Frame(
+		When.EveryFrame(
 			Log("Multi-block sequence start"),
 			Run(() =>
 			{
@@ -35,7 +35,7 @@ public sealed class EditorLunyScriptTest : LunyScript.LunyScript
 
 		// Demonstrate global variables with variable change tracking
 		// In debug builds, Variables.OnVariableChanged events will fire
-		Every.Frame(Run(() =>
+		When.EveryFrame(Run(() =>
 		{
 			var score = GlobalVariables.Get<Int32>("GameScore");
 			GlobalVariables["GameScore"] = score + 1;

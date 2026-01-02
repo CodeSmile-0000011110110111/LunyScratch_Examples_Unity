@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Luny.Scripts
 {
-	public sealed class DelayingObserver : IEngineLifecycleObserver
+	public sealed class DelayingObserver : IEngineObserver
 	{
 		private const Int32 StartupDelayInMilliseconds = 100;
 		private const Int32 UpdateDelayInMilliseconds = 10;

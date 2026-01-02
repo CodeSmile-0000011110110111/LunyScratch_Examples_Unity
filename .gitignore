@@ -102,3 +102,4 @@ InitTestScene*.unity*
 # RFC repository junction (external design docs)
 /[Aa]ssets/RFC~/
 nul
+.ai/
