@@ -25,5 +25,11 @@
 - **Explicit Confirmation**: Do not modify any files or start implementation until the user has explicitly confirmed the plan.
 - **No "Running Ahead"**: Wait for confirmation after each major phase (Planning -> Implementation -> Verification).
 
+## Code Style
+- don't write if or else statements on a single line
+- don't add braces around single-line statements (if, else, for, ..) except for do/while and using
+- properties and methods whenever possible should be written on a single line using "expression" syntax - use a ternary if needed but avoid multiple (nested) ternaries
+- interfaces for only one type should be added to the same file as the type implementing it. Place the interface above the type.
+
 ## Notes
 - Test scene: in package, in engine-specific folders
