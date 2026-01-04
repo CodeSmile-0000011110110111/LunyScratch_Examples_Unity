@@ -1,10 +1,11 @@
 ﻿using Luny.Engine;
+using Luny.Engine.Registries;
 using System;
 using System.Threading.Tasks;
 
 namespace Luny.Scripts
 {
-	public sealed class DelayingObserver : IEngineObserver
+	public sealed class DelayingObserver : ILunyEngineObserver
 	{
 		private const Int32 StartupDelayInMilliseconds = 100;
 		private const Int32 UpdateDelayInMilliseconds = 10;

@@ -14,7 +14,7 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 
 	private WorldSpaceDebugAnchor m_WorldSpaceAnchor;
 	private StringBuilder m_StringBuilder = new();
-	private IScriptContext m_SelectedScriptContext;
+	private ILunyScriptContext m_SelectedScriptContext;
 
 	private void Awake()
 	{
@@ -64,7 +64,7 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 	private void UpdateGlobalVariables(String variableName = null)
 	{
 		var globalVariables = LunyScriptEngine.Instance.GlobalVariables;
-		var text = UpdateLabel(nameof(IScriptContext.GlobalVariables), globalVariables, variableName);
+		var text = UpdateLabel(nameof(ILunyScriptContext.GlobalVariables), globalVariables, variableName);
 		m_GlobalVarsText.text = text;
 	}
 
@@ -75,12 +75,12 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 		{
 			var name = m_SelectedScriptContext.LunyObject.Name;
 			var localVariables = m_SelectedScriptContext.LocalVariables;
-			var title = $"{nameof(IScriptContext.LocalVariables)} ({name})";
+			var title = $"{nameof(ILunyScriptContext.LocalVariables)} ({name})";
 			text = UpdateLabel(title, localVariables, variableName);
 
 			if (m_WorldSpaceAnchor != null)
 			{
-				var go = m_SelectedScriptContext.LunyObject.As<GameObject>();
+				var go = m_SelectedScriptContext.LunyObject.Cast<GameObject>();
 				if (go != null)
 				{
 					m_WorldSpaceAnchor.Target = go.transform;
@@ -89,7 +89,7 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 			}
 		}
 		else
-			text = UpdateLabel(nameof(IScriptContext.LocalVariables), null, null);
+			text = UpdateLabel(nameof(ILunyScriptContext.LocalVariables), null, null);
 
 		m_LocalVarsText.text = text;
 	}

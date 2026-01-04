@@ -1,5 +1,7 @@
 using Luny;
 using Luny.Engine;
+using Luny.Engine.Diagnostics;
+using Luny.Engine.Events;
 using System;
 using System.Collections;
 using System.Text;
@@ -8,12 +10,12 @@ using UnityEngine;
 
 public sealed class ProfilerLabel : MonoBehaviour
 {
-	[SerializeField] private EngineLifecycleEvents m_ShowCategories = EngineLifecycleEvents.OnStartup | EngineLifecycleEvents.OnFixedStep |
-	                                                             EngineLifecycleEvents.OnUpdate | EngineLifecycleEvents.OnLateUpdate;
+	[SerializeField] private LunyEngineLifecycleEvents m_ShowCategories = LunyEngineLifecycleEvents.OnStartup | LunyEngineLifecycleEvents.OnFixedStep |
+	                                                                      LunyEngineLifecycleEvents.OnUpdate | LunyEngineLifecycleEvents.OnLateUpdate;
 	[SerializeField] [Range(1, 120)] private Int32 m_UpdateIntervalInFrames = 20;
 
 	private TMP_Text m_Text;
-	private IEngineProfiler m_Profiler;
+	private ILunyEngineProfiler m_Profiler;
 	private StringBuilder m_StringBuilder = new();
 
 	private void OnValidate()

@@ -1,4 +1,6 @@
 using Luny;
+using Luny.Engine.Bridge;
+using Luny.Engine.Identity;
 using LunyScript;
 using System;
 using System.Diagnostics;
@@ -37,7 +39,7 @@ public sealed partial class VariablesDebugOverlay
 		var selectedGameObject = Selection.activeGameObject;
 		if (selectedGameObject != null)
 		{
-			var nativeID = (NativeID)(Int32)selectedGameObject.GetEntityId();
+			var nativeID = (LunyNativeObjectID)(Int32)selectedGameObject.GetEntityId();
 			var context = LunyScriptEngine.Instance.GetScriptContext(nativeID);
 			if (context != null)
 			{
