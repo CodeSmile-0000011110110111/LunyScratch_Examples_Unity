@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.needle.compilation-visualizer": "https://github.com/needle-tools/compilation-visualizer.git",
     "com.unity.ai.assistant": "1.0.0-pre.12",
     "com.unity.ai.generators": "1.0.0-pre.20",
     "com.unity.ai.inference": "2.4.1",

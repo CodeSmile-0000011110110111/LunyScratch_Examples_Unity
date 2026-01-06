@@ -52,7 +52,7 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 		}
 	}
 
-	private void OnGlobalVariableChanged(Object sender, VariableChangedEventArgs e) => UpdateGlobalVariables(e.Name);
+	private void OnGlobalVariableChanged(Object sender, LunyScriptVariableChangedArgs e) => UpdateGlobalVariables(e.Name);
 
 	private void UpdateAllVariables()
 	{
@@ -113,7 +113,7 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 	*/
 	}
 
-	private String UpdateLabel(String title, IVariables variables, String variableName)
+	private String UpdateLabel(String title, ILunyScriptVariables variables, String variableName)
 	{
 		m_StringBuilder.Clear();
 		m_StringBuilder.AppendLine(title);

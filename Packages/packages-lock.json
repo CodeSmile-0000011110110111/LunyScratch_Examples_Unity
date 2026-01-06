@@ -1,12 +1,5 @@
 {
   "dependencies": {
-    "com.needle.compilation-visualizer": {
-      "version": "https://github.com/needle-tools/compilation-visualizer.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "18e171af30b8765d40dfd0c067807d7c10e5cd9e"
-    },
     "com.unity.addressables": {
       "version": "2.7.4",
       "depth": 1,
