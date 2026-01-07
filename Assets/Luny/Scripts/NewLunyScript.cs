@@ -13,14 +13,14 @@ public sealed class PresentDeliveryProcessor : LunyScript.LunyScript
 		var pps = (Int32)GlobalVariables.Get<Number>("PresentsPerSecond");
 		//OnUpdate(Debug.Log($"Delivered {pps / 60} presents"));
 
-		When.EveryFrame(
+		Every.Frame(
 			Run(() =>
 			{
 				var delivered = LocalVariables.Get<Int32>("PresentsDelivered");
 				LocalVariables["PresentsDelivered"] = ++delivered;
 			})
 		);
-		When.EveryFixedStep(
+		Every.FixedStep(
 			Run(() =>
 			{
 				var wrapped = LocalVariables.Get<Int32>("PresentsWrapped");

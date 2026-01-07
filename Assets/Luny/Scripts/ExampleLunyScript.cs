@@ -26,7 +26,7 @@ public sealed class ExampleLunyScript : LunyScript.LunyScript
 		// OnLateUpdate(Log("ExampleLunyScript LateUpdate tick"));
 
 		// Multi-block sequence demonstrating debug breakpoint
-		When.EveryFrame(
+		Every.Frame(
 			//Log("Multi-block sequence start"),
 			Run(() =>
 			{
@@ -43,7 +43,7 @@ public sealed class ExampleLunyScript : LunyScript.LunyScript
 
 		// Demonstrate global variables with variable change tracking
 		// In debug builds, Variables.OnVariableChanged events will fire
-		When.EveryFixedStep(Run(() =>
+		Every.FixedStep(Run(() =>
 		{
 			var score = GlobalVariables.Get<int>("GameScore");
 			GlobalVariables["GameScore"] = score + 1;
