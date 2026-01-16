@@ -1,8 +1,9 @@
 [submodule "Packages/de.codesmile.lunyscratch_unity"]
 	path = Packages/de.codesmile.lunyscratch_unity
 	url = https://github.com/CodeSmile-0000011110110111/LunyScratch_Unity.git
-	branch = main
     update = merge
 [submodule "Packages/de.codesmile.lunyscript"]
 	path = Packages/de.codesmile.lunyscript
 	url = https://github.com/CodeSmile-0000011110110111/LunyScript-UnityPackage
+	branch = .
+    update = merge
