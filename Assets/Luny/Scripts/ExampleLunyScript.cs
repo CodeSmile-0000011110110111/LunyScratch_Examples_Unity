@@ -7,14 +7,14 @@ public sealed class ExampleLunyScript : LunyScript.LunyScript
 	public override void Build()
 	{
 		// Set up variables
-		LocalVariables["Health"] = 100;
-		LocalVariables["Name"] = "Player1";
-		GlobalVariables["GameScore"] = 0;
+		LocalVars["Health"] = 100;
+		LocalVars["Name"] = "Player1";
+		GlobalVars["GameScore"] = 0;
 
-		GlobalVariables["Boolean_True"] = true;
-		GlobalVariables["Boolean_False"] = false;
-		GlobalVariables["String_Value"] = "this is a string";
-		GlobalVariables["Number_Value"] = 1234567890;
+		GlobalVars["Boolean_True"] = true;
+		GlobalVars["Boolean_False"] = false;
+		GlobalVars["String_Value"] = "this is a string";
+		GlobalVars["Number_Value"] = 1234567890;
 
 		// Demonstrate Log vs DebugLog
 		// DebugLog() is completely stripped in release builds
@@ -26,15 +26,15 @@ public sealed class ExampleLunyScript : LunyScript.LunyScript
 		// OnLateUpdate(Log("ExampleLunyScript LateUpdate tick"));
 
 		// Multi-block sequence demonstrating debug breakpoint
-		Every.Frame(
+		When.Self.Updates(
 			//Log("Multi-block sequence start"),
-			Run(() =>
+			Method.Run(() =>
 			{
-				var health = LocalVariables.Get<int>("Health");
-				LocalVariables["Health"] = health - 1;
+				var health = LocalVars.Get<int>("Health");
+				LocalVars["Health"] = health - 1;
 
-				var score = LocalVariables.Get<int>("LocalScore");
-				LocalVariables["LocalScore"] = ++score;
+				var score = LocalVars.Get<int>("LocalScore");
+				LocalVars["LocalScore"] = ++score;
 			})
 			//DebugBreak("sequence breakpoint"),
 			//EditorPausePlayer("PAUSE PLAYER"),
@@ -43,10 +43,10 @@ public sealed class ExampleLunyScript : LunyScript.LunyScript
 
 		// Demonstrate global variables with variable change tracking
 		// In debug builds, Variables.OnVariableChanged events will fire
-		Every.FixedStep(Run(() =>
+		When.Self.Steps(Method.Run(() =>
 		{
-			var score = GlobalVariables.Get<int>("GameScore");
-			GlobalVariables["GameScore"] = score + 1;
+			var score = GlobalVars.Get<int>("GameScore");
+			GlobalVars["GameScore"] = score + 1;
 		}));
 
 		// Note: To enable debug features, build with DEBUG, LUNY_DEBUG, or LUNYSCRIPT_DEBUG defined

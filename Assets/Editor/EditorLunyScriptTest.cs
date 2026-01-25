@@ -9,36 +9,36 @@ public sealed class EditorLunyScriptTest : LunyScript.LunyScript
 	public override void Build()
 	{
 		// Set up variables
-		LocalVariables["Health"] = 100;
-		LocalVariables["Name"] = "Player1";
-		GlobalVariables["GameScore"] = 0;
+		LocalVars["Health"] = 100;
+		LocalVars["Name"] = "Player1";
+		GlobalVars["GameScore"] = 0;
 
 		// Demonstrate Log vs DebugLog
 		// DebugLog() is completely stripped in release builds
-		Every.Frame(Debug.LogInfo("Debug-only log - stripped in release"));
+		When.Self.Updates(Debug.LogInfo("Debug-only log - stripped in release"));
 		// Log() appears in both debug and release builds
-		Every.Frame(Log("ExampleLunyScript Update tick - always logs"));
-		Every.FixedStep(Log("ExampleLunyScript FixedStep tick"));
-		Every.FrameEnds(Log("ExampleLunyScript LateUpdate tick"));
+		When.Self.Updates(Engine.Log("ExampleLunyScript Update tick - always logs"));
+		When.Self.Steps(Engine.Log("ExampleLunyScript FixedStep tick"));
+		When.Self.LateUpdates(Engine.Log("ExampleLunyScript LateUpdate tick"));
 
 		// Multi-block sequence demonstrating debug breakpoint
-		Every.Frame(
-			Log("Multi-block sequence start"),
-			Run(() =>
+		When.Self.Updates(
+			Engine.Log("Multi-block sequence start"),
+			Method.Run(() =>
 			{
-				var health = LocalVariables.Get<Int32>("Health");
-				LocalVariables["Health"] = health - 1;
+				var health = LocalVars.Get<Int32>("Health");
+				LocalVars["Health"] = health - 1;
 			}),
 			Debug.Break("sequence breakpoint"),
-			Log("Multi-block sequence end")
+			Engine.Log("Multi-block sequence end")
 		);
 
 		// Demonstrate global variables with variable change tracking
 		// In debug builds, Variables.OnVariableChanged events will fire
-		Every.Frame(Run(() =>
+		When.Self.Updates(Method.Run(() =>
 		{
-			var score = GlobalVariables.Get<Int32>("GameScore");
-			GlobalVariables["GameScore"] = score + 1;
+			var score = GlobalVars.Get<Int32>("GameScore");
+			GlobalVars["GameScore"] = score + 1;
 		}));
 
 		// Note: To enable debug features, build with DEBUG or LUNYSCRIPT_DEBUG defined

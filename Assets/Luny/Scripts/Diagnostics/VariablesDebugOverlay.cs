@@ -33,7 +33,7 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 
 	private void OnEnable()
 	{
-		var globalVariables = LunyScriptEngine.Instance.GlobalVariables;
+		var globalVariables = LunyScriptEngine.Instance.GlobalVars;
 		globalVariables.OnVariableChanged += OnGlobalVariableChanged;
 		Editor_RegisterSelectionChangedEvent();
 
@@ -47,7 +47,7 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 		var scriptEngine = LunyScriptEngine.Instance;
 		if (scriptEngine != null)
 		{
-			var globalVariables = LunyScriptEngine.Instance.GlobalVariables;
+			var globalVariables = LunyScriptEngine.Instance.GlobalVars;
 			globalVariables.OnVariableChanged -= OnGlobalVariableChanged;
 		}
 	}
@@ -63,7 +63,7 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 
 	private void UpdateGlobalVariables(String variableName = null)
 	{
-		var globalVariables = LunyScriptEngine.Instance.GlobalVariables;
+		var globalVariables = LunyScriptEngine.Instance.GlobalVars;
 		var text = UpdateLabel(nameof(ILunyScriptContext.GlobalVariables), globalVariables, variableName);
 		m_GlobalVarsText.text = text;
 	}

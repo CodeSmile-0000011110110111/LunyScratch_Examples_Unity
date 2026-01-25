@@ -5,26 +5,26 @@ public sealed class PresentDeliveryProcessor : LunyScript.LunyScript
 {
 	public override void Build()
 	{
-		LocalVariables["PlayerName"] = "Santa";
-		LocalVariables["PresentsDelivered"] = 0;
-		GlobalVariables["PresentsToDeliver"] = Int32.MaxValue;
-		GlobalVariables["PresentsPerSecond"] = new Number(12427);
+		LocalVars["PlayerName"] = "Santa";
+		LocalVars["PresentsDelivered"] = 0;
+		GlobalVars["PresentsToDeliver"] = Int32.MaxValue;
+		GlobalVars["PresentsPerSecond"] = new Number(12427);
 
-		var pps = (Int32)GlobalVariables.Get<Number>("PresentsPerSecond");
+		var pps = (Int32)GlobalVars.Get<Number>("PresentsPerSecond");
 		//OnUpdate(Debug.Log($"Delivered {pps / 60} presents"));
 
-		Every.Frame(
-			Run(() =>
+		When.Self.Updates(
+			Method.Run(() =>
 			{
-				var delivered = LocalVariables.Get<Int32>("PresentsDelivered");
-				LocalVariables["PresentsDelivered"] = ++delivered;
+				var delivered = LocalVars.Get<Int32>("PresentsDelivered");
+				LocalVars["PresentsDelivered"] = ++delivered;
 			})
 		);
-		Every.FixedStep(
-			Run(() =>
+		When.Self.Steps(
+			Method.Run(() =>
 			{
-				var wrapped = LocalVariables.Get<Int32>("PresentsWrapped");
-				LocalVariables["PresentsWrapped"] = ++wrapped;
+				var wrapped = LocalVars.Get<Int32>("PresentsWrapped");
+				LocalVars["PresentsWrapped"] = ++wrapped;
 			})
 		);
 
