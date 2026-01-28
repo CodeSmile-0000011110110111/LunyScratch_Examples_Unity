@@ -70,7 +70,7 @@ public sealed partial class VariablesDebugOverlay
 		}
 	}
 
-	private void OnLocalVariableChanged(Object sender, LunyScriptVariableChangedArgs e) => UpdateLocalVariables(e.Name);
+	private void OnLocalVariableChanged(Object sender, VariableChangedArgs e) => UpdateLocalVariables(e.Name);
 	//private void OnInspectorVariableChanged(Object sender, VariableChangedEventArgs e) => UpdateInspectorVariables(e.Name);
 #endif
 }
