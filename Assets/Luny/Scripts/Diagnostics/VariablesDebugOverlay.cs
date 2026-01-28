@@ -114,7 +114,7 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 	*/
 	}
 
-	private String UpdateLabel(String title, ILunyTable variables, String variableName)
+	private String UpdateLabel(String title, ITable variables, String variableName)
 	{
 		m_StringBuilder.Clear();
 		m_StringBuilder.AppendLine(title);
