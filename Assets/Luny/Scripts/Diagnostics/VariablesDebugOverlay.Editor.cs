@@ -1,6 +1,5 @@
 using Luny;
 using Luny.Engine.Bridge;
-using Luny.Engine.Identity;
 using LunyScript;
 using System;
 using System.Diagnostics;
@@ -39,7 +38,7 @@ public sealed partial class VariablesDebugOverlay
 		var selectedGameObject = Selection.activeGameObject;
 		if (selectedGameObject != null)
 		{
-			var nativeID = (LunyNativeObjectID)(Int32)selectedGameObject.GetEntityId();
+			var nativeID = (Luny.Engine.Bridge.Identity.LunyNativeObjectID)(Int32)selectedGameObject.GetEntityId();
 			var context = LunyScriptEngine.Instance.GetScriptContext(nativeID);
 			if (context != null)
 			{
@@ -57,7 +56,6 @@ public sealed partial class VariablesDebugOverlay
 		if (m_SelectedScriptContext != null)
 		{
 			m_SelectedScriptContext.LocalVariables.OnVariableChanged += OnLocalVariableChanged;
-			//m_SelectedScriptContext.InspectorVariables.OnVariableChanged += OnInspectorVariableChanged;
 		}
 	}
 
@@ -66,11 +64,9 @@ public sealed partial class VariablesDebugOverlay
 		if (m_SelectedScriptContext != null)
 		{
 			m_SelectedScriptContext.LocalVariables.OnVariableChanged -= OnLocalVariableChanged;
-			//m_SelectedScriptContext.InspectorVariables.OnVariableChanged -= OnInspectorVariableChanged;
 		}
 	}
 
 	private void OnLocalVariableChanged(Object sender, VariableChangedArgs e) => UpdateLocalVariables(e.Name);
-	//private void OnInspectorVariableChanged(Object sender, VariableChangedEventArgs e) => UpdateInspectorVariables(e.Name);
 #endif
 }
