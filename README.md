@@ -1,8 +1,11 @@
-# LunyScratch: Unity Examples Project
+# LunyScript_Examples_Unity
 
-To get this repository, clone it recursively!
+[LunyScript](https://lunyscript.com) (cross-engine game scripting) example project for Unity.
 
-Command line:
+Currently using Unity 6.3
 
-`git clone --recursive https://github.com/CodeSmile-0000011110110111/LunyScratch_Examples_Unity`
+## Cloning Procedure
 
+Since repository references submodules, you need to clone them recursively:
+
+`git clone --recursive https://github.com/CodeSmile-0000011110110111/LunyScript_Examples_Unity`
