@@ -1,5 +1,3 @@
-using System;
-
 /// <summary>
 /// Example LunyScript demonstrating the block system and Step 2 debug/profiling features.
 /// This script will automatically bind to any GameObject named "ExampleLunyScript" in the scene.
@@ -19,11 +17,11 @@ public sealed class ExampleLunyScript : LunyScript.LunyScript
 		GVar("Number_Value").Set(1234567890);
 
 		// Multi-block sequence demonstrating debug breakpoint
-		When.Self.Updates(Var("Health").Dec(),Var("LocalScore").Inc());
+		On.FrameUpdate(Var("Health").Dec(), Var("LocalScore").Inc());
 
 		// Demonstrate global variables with variable change tracking
 		// In debug builds, Variables.OnVariableChanged events will fire
-		When.Self.Steps(GVar("GameScore").Inc());
+		On.Heartbeat(GVar("GameScore").Inc());
 
 		// Note: To enable debug features, build with DEBUG, LUNY_DEBUG, or LUNYSCRIPT_DEBUG defined
 		// In release builds, all DebugLog() and DebugBreak() calls have zero overhead

@@ -1,4 +1,5 @@
 ﻿using Luny.Engine;
+using Luny.Engine.Bridge;
 using System;
 using System.Threading.Tasks;
 
@@ -12,9 +13,9 @@ namespace Luny.Scripts
 		public Boolean Enabled => false;
 
 		public void OnEngineStartup() => Task.Delay(StartupDelayInMilliseconds).Wait();
-		public void OnEngineFixedStep(Double fixedDeltaTime) => Task.Delay(UpdateDelayInMilliseconds).Wait();
-		public void OnEngineUpdate(Double deltaTime) => Task.Delay(UpdateDelayInMilliseconds).Wait();
-		public void OnEngineLateUpdate(Double deltaTime) => Task.Delay(UpdateDelayInMilliseconds).Wait();
+		public void OnEngineHeartbeat(Double fixedDeltaTime) => Task.Delay(UpdateDelayInMilliseconds).Wait();
+		public void OnEngineFrameUpdate(Double deltaTime) => Task.Delay(UpdateDelayInMilliseconds).Wait();
+		public void OnEngineFrameLateUpdate(Double deltaTime) => Task.Delay(UpdateDelayInMilliseconds).Wait();
 		public void OnEngineShutdown() => Task.Delay(ShutdownDelayInMilliseconds).Wait();
 	}
 }

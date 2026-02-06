@@ -10,8 +10,8 @@ public sealed class PresentDeliveryProcessor : LunyScript.LunyScript
 		GVar("PresentsToDeliver").Set(Int32.MaxValue);
 		GVar("PresentsPerSecond").Set(new Number(12427));
 
-		When.Self.Updates(Var("PresentsDelivered").Inc());
-		When.Self.Steps(Var("PresentsWrapped").Inc());
+		On.FrameUpdate(Var("PresentsDelivered").Inc());
+		On.Heartbeat(Var("PresentsWrapped").Inc());
 	}
 
 	private void MyCustomCode() => LunyLogger.LogInfo("custom method runs");

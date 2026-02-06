@@ -1,0 +1,11 @@
+<Project>
+    <PropertyGroup>
+        <NoWarn>$(NoWarn);8021;MSB3061;MSB3277</NoWarn>
+    </PropertyGroup>
+    <PropertyGroup Condition="$(MSBuildProjectName.StartsWith('Assembly-CSharp'))">
+        <NoWarn>$(NoWarn);8785</NoWarn>
+    </PropertyGroup>
+    <PropertyGroup Condition="$(MSBuildProjectName.StartsWith('Unity.')) Or $(MSBuildProjectName.StartsWith('com.unity.'))">
+        <NoWarn>$(NoWarn);0618;8785</NoWarn>
+    </PropertyGroup>
+</Project>
