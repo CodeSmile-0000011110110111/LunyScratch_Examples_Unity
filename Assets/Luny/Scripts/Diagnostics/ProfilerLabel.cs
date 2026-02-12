@@ -9,7 +9,7 @@ using UnityEngine;
 
 public sealed class ProfilerLabel : MonoBehaviour
 {
-	[SerializeField] private LunyEngineLifecycleEvents m_ShowCategories = LunyEngineLifecycleEvents.OnEngineStartup | LunyEngineLifecycleEvents.OnEngineFixedStep |
+	[SerializeField] private LunyEngineLifecycleEvents m_ShowCategories = LunyEngineLifecycleEvents.OnEngineStartup | LunyEngineLifecycleEvents.OnEngineHeartbeat |
 	                                                                      LunyEngineLifecycleEvents.OnEngineUpdate | LunyEngineLifecycleEvents.OnEngineLateUpdate;
 	[SerializeField] [Range(1, 120)] private Int32 m_UpdateIntervalInFrames = 20;
 
