@@ -1,10 +1,13 @@
+using LunyScript;
+using LunyScript.Activation;
+
 /// <summary>
 /// Example LunyScript demonstrating the block system and Step 2 debug/profiling features.
 /// This script will automatically bind to any GameObject named "ExampleLunyScript" in the scene.
 /// </summary>
-public sealed class ExampleLunyScript : LunyScript.LunyScript
+public sealed class ExampleScript : LunyScript.Script
 {
-	public override void Build()
+	public override void Build(ScriptContext context)
 	{
 		// Set up variables
 		Var("Health").Set(100);

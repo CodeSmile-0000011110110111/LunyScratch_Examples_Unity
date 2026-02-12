@@ -39,7 +39,7 @@ public sealed partial class VariablesDebugOverlay
 		if (selectedGameObject != null)
 		{
 			var nativeID = (LunyNativeObjectID)(Int32)selectedGameObject.GetEntityId();
-			var context = LunyScriptEngine.Instance.GetScriptContext(nativeID);
+			var context = ScriptEngine.Instance.GetScriptContext(nativeID);
 			if (context != null)
 			{
 				m_SelectedScriptContext = context;

@@ -1,6 +1,5 @@
 ﻿using Luny;
 using LunyScript;
-using LunyScript.Execution;
 using System;
 using System.Text;
 using TMPro;
@@ -15,7 +14,7 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 
 	private WorldSpaceDebugAnchor m_WorldSpaceAnchor;
 	private StringBuilder m_StringBuilder = new();
-	private ILunyScriptContext m_SelectedScriptContext;
+	private IScriptRuntimeContext m_SelectedScriptContext;
 
 	private void Awake()
 	{
@@ -34,7 +33,7 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 
 	private void OnEnable()
 	{
-		var globalVariables = LunyScriptEngine.Instance.GlobalVariables;
+		var globalVariables = ScriptEngine.Instance.GlobalVariables;
 		globalVariables.OnVariableChanged += OnGlobalVariableChanged;
 		Editor_RegisterSelectionChangedEvent();
 
@@ -45,10 +44,10 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 	{
 		Editor_UnregisterSelectionChangedEvent();
 
-		var scriptEngine = LunyScriptEngine.Instance;
+		var scriptEngine = ScriptEngine.Instance;
 		if (scriptEngine != null)
 		{
-			var globalVariables = LunyScriptEngine.Instance.GlobalVariables;
+			var globalVariables = ScriptEngine.Instance.GlobalVariables;
 			globalVariables.OnVariableChanged -= OnGlobalVariableChanged;
 		}
 	}
@@ -64,8 +63,8 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 
 	private void UpdateGlobalVariables(String variableName = null)
 	{
-		var globalVariables = LunyScriptEngine.Instance.GlobalVariables;
-		var text = UpdateLabel(nameof(ILunyScriptContext.GlobalVariables), globalVariables, variableName);
+		var globalVariables = ScriptEngine.Instance.GlobalVariables;
+		var text = UpdateLabel(nameof(IScriptRuntimeContext.GlobalVariables), globalVariables, variableName);
 		m_GlobalVarsText.text = text;
 	}
 
@@ -76,7 +75,7 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 		{
 			var name = m_SelectedScriptContext.LunyObject.Name;
 			var localVariables = m_SelectedScriptContext.LocalVariables;
-			var title = $"{nameof(ILunyScriptContext.LocalVariables)} ({name})";
+			var title = $"{nameof(IScriptRuntimeContext.LocalVariables)} ({name})";
 			text = UpdateLabel(title, localVariables, variableName);
 
 			if (m_WorldSpaceAnchor != null)
@@ -90,7 +89,7 @@ public sealed partial class VariablesDebugOverlay : MonoBehaviour
 			}
 		}
 		else
-			text = UpdateLabel(nameof(ILunyScriptContext.LocalVariables), null, null);
+			text = UpdateLabel(nameof(IScriptRuntimeContext.LocalVariables), null, null);
 
 		m_LocalVarsText.text = text;
 	}

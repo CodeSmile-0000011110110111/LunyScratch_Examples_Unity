@@ -1,9 +1,10 @@
 using Luny;
+using LunyScript;
 using System;
 
-public sealed class PresentDeliveryProcessor : LunyScript.LunyScript
+public sealed class PresentDeliveryProcessor : Script
 {
-	public override void Build()
+	public override void Build(ScriptContext context)
 	{
 		Var("PlayerName").Set("Santa");
 		Var("PresentsDelivered").Set(0);

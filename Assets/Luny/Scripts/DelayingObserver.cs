@@ -13,9 +13,9 @@ namespace Luny.Scripts
 		public Boolean Enabled => false;
 
 		public void OnEngineStartup() => Task.Delay(StartupDelayInMilliseconds).Wait();
-		public void OnEngineHeartbeat(Double fixedDeltaTime) => Task.Delay(UpdateDelayInMilliseconds).Wait();
-		public void OnEngineFrameUpdate(Double deltaTime) => Task.Delay(UpdateDelayInMilliseconds).Wait();
-		public void OnEngineFrameLateUpdate(Double deltaTime) => Task.Delay(UpdateDelayInMilliseconds).Wait();
+		public void OnEngineHeartbeat() => Task.Delay(UpdateDelayInMilliseconds).Wait();
+		public void OnEngineFrameUpdate() => Task.Delay(UpdateDelayInMilliseconds).Wait();
+		public void OnEngineFrameLateUpdate() => Task.Delay(UpdateDelayInMilliseconds).Wait();
 		public void OnEngineShutdown() => Task.Delay(ShutdownDelayInMilliseconds).Wait();
 	}
 }
