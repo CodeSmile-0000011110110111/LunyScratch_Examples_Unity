@@ -1,9 +1,9 @@
 using Luny;
-using Luny.Engine.Bridge.Identity;
 using LunyScript;
 using System;
 using System.Diagnostics;
 #if UNITY_EDITOR
+using Luny.Engine.Bridge;
 using UnityEditor;
 #endif
 
